@@ -1,0 +1,11 @@
+---
+import { getSdkLabel } from '../lib/i18n';
+import type { AppEntry } from '../lib/types';
+
+interface Props {
+  app: AppEntry;
+}
+const { app } = Astro.props;
+---
+
+<span class={`sdk-chip ${app.build.sdk === 'unknown' ? 'is-unknown' : ''}`}>{getSdkLabel(app)}</span>

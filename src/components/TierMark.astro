@@ -1,0 +1,21 @@
+---
+import { t } from '../lib/i18n';
+import { getTier, isSolidEvidence } from '../lib/status';
+import type { AppEntry, Locale } from '../lib/types';
+
+interface Props {
+  app: AppEntry;
+  lang: Locale;
+}
+const { app, lang } = Astro.props;
+const tier = getTier(app);
+const solid = isSolidEvidence(app);
+---
+
+<span
+  class={`tier-mark tier-${tier} ${solid ? 'is-solid' : 'is-inferred'}`}
+  title={t(lang, `tier.${tier}.description`)}
+>
+  <span class="tier-dot" aria-hidden="true"></span>
+  <span>{t(lang, `tier.${tier}`)}</span>
+</span>

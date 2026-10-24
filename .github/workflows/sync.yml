@@ -1,0 +1,30 @@
+name: Sync App Store metadata
+
+on:
+  schedule:
+    - cron: '17 18 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run sync
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          branch: chore/app-store-sync
+          delete-branch: true
+          commit-message: 'chore: sync App Store metadata'
+          title: 'chore: sync App Store metadata'
+          body: 'Nightly App Store version and icon sync. Review version changes against the device-tested version before merging.'
+          labels: data

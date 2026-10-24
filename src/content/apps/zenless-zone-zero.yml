@@ -1,0 +1,18 @@
+name: Zenless Zone Zero
+developer: COGNOSPHERE PTE. LTD.
+category: games
+store_id: "1606356401"
+icon: /icons/zenless-zone-zero.jpg
+aliases:
+  - ZZZ
+  - 绝区零
+build:
+  sdk: unknown
+  evidence: unknown
+features:
+  - apple-featured
+issues: []
+store:
+  current_version: 3.3.0
+  current_version_release_date: 2026-10-20
+  synced_at: 2026-10-24

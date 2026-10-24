@@ -1,0 +1,15 @@
+name: Moises
+developer: Moises Systems, Inc
+category: music
+store_id: "1515796612"
+icon: /icons/moises.jpg
+build:
+  sdk: unknown
+  evidence: unknown
+features:
+  - apple-featured
+issues: []
+store:
+  current_version: 2.150.0
+  current_version_release_date: 2026-10-15
+  synced_at: 2026-10-24

@@ -1,0 +1,55 @@
+---
+import AppIcon from './AppIcon.astro';
+import TierMark from './TierMark.astro';
+import SdkChip from './SdkChip.astro';
+import EvidenceLabel from './EvidenceLabel.astro';
+import { t } from '../lib/i18n';
+import { getConfidence, getHealth, getTier } from '../lib/status';
+import { appPath } from '../lib/url';
+import type { AppEntry, Locale } from '../lib/types';
+
+interface Props {
+  app: AppEntry;
+  lang: Locale;
+  eager?: boolean;
+}
+const { app, lang, eager = false } = Astro.props;
+const tier = getTier(app);
+const health = getHealth(app);
+const confidence = getConfidence(app);
+const checkedDate = app.test?.date ?? app.build.checked ?? '';
+const search = [app.name, app.name_zh, app.developer, ...(app.aliases ?? [])]
+  .filter(Boolean)
+  .join(' ')
+  .toLocaleLowerCase();
+---
+
+<li
+  class={`app-row health-${health}`}
+  data-slug={app.id}
+  data-tier={tier}
+  data-category={app.category}
+  data-confidence={confidence}
+  data-health={health}
+  data-date={checkedDate}
+  data-name={app.name.toLocaleLowerCase()}
+  data-search={search}
+>
+  <a class="app-row-link" href={appPath(lang, app.id)}>
+    <span class="app-cell app-cell-app">
+      <AppIcon app={app} size="small" eager={eager} />
+      <span class="app-identity">
+        <strong>{app.name}</strong>
+        <span>{app.developer} · {t(lang, `category.${app.category}`)}</span>
+      </span>
+    </span>
+    <span class="app-cell app-cell-tier">
+      <TierMark app={app} lang={lang} />
+      {health !== 'ok' && health !== 'unknown' && <span class="issue-flag">{t(lang, 'health.issues')}</span>}
+    </span>
+    <span class="app-cell app-cell-sdk"><SdkChip app={app} /></span>
+    <span class="app-cell app-cell-evidence"><EvidenceLabel app={app} lang={lang} /></span>
+    <span class="app-cell app-cell-date">{checkedDate || '—'}</span>
+    <span class="app-row-chevron" aria-hidden="true">›</span>
+  </a>
+</li>

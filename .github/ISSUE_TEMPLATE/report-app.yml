@@ -1,0 +1,78 @@
+name: App report / 应用报告
+description: Report observed iPhone Duo behavior / 提交 iPhone Duo 实机观察
+title: "[Report] "
+labels: ["report", "needs-verification"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Test on iPhone Duo and include the app version. Screenshots are strongly encouraged.
+        请在 iPhone Duo 实机上测试，记录应用版本，并尽量附截图。
+  - type: input
+    id: app
+    attributes:
+      label: App name / 应用名称
+      placeholder: Fantastical
+    validations:
+      required: true
+  - type: input
+    id: store
+    attributes:
+      label: App Store link / App Store 链接
+      placeholder: https://apps.apple.com/app/id718043190
+  - type: input
+    id: version
+    attributes:
+      label: Tested app version / 测试的应用版本
+      placeholder: "4.2.4"
+  - type: input
+    id: os
+    attributes:
+      label: iOS version / iOS 版本
+      placeholder: "27.1"
+  - type: dropdown
+    id: tier
+    attributes:
+      label: Observed tier / 观察到的档位
+      options:
+        - Optimized / 已优化 · 27.1 SDK
+        - Resizable / 可缩放 · 27.0 SDK
+        - Compatible / 可运行 · ≤26 SDK
+        - Not sure / 不确定
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks that passed / 通过的检查
+      options:
+        - label: Outer display uses full width / 外屏全宽
+        - label: Inner display is edge-to-edge / 内屏全宽
+        - label: Vertical bars remain readable / 竖排栏可读
+        - label: Content avoids the fold / 内容避开折痕
+        - label: Controls avoid the camera region / 控件避开摄像头区域
+        - label: Split View resizes correctly / Split View 正确缩放
+        - label: State survives fold and unfold / 折叠展开后状态保留
+  - type: textarea
+    id: failures
+    attributes:
+      label: Failures and reproduction steps / 失败项与复现步骤
+      description: Name the screen, pose, and what went wrong. / 写明界面、设备形态和问题。
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Screenshots and evidence / 截图与证据
+      description: Drag outer, inner, and half-folded screenshots here. / 拖入外屏、内屏和半折截图。
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes / 备注
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Credit and license / 署名与许可
+      options:
+        - label: You may credit my GitHub handle and license this report under CC BY 4.0. / 可以署名我的 GitHub 账号，并以 CC BY 4.0 发布此报告。
+          required: true

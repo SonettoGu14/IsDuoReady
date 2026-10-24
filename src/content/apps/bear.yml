@@ -1,0 +1,17 @@
+name: Bear
+developer: Shiny Frog Ltd.
+category: productivity
+store_id: "1016366447"
+icon: /icons/bear.jpg
+aliases:
+  - Bear Markdown Notes
+build:
+  sdk: unknown
+  evidence: unknown
+features:
+  - apple-featured
+issues: []
+store:
+  current_version: 3.0.3
+  current_version_release_date: 2026-10-22
+  synced_at: 2026-10-24

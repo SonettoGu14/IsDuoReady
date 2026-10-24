@@ -1,0 +1,16 @@
+name: YouTube
+developer: Google
+category: entertainment
+store_id: "544007664"
+icon: /icons/youtube.jpg
+aliases:
+  - 油管
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: 21.42.4
+  current_version_release_date: 2026-10-21
+  synced_at: 2026-10-24

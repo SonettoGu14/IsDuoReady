@@ -1,0 +1,15 @@
+name: Retrocade
+developer: Resolution Games AB
+category: games
+store_id: "6746784702"
+icon: /icons/retrocade.jpg
+build:
+  sdk: unknown
+  evidence: unknown
+features:
+  - apple-featured
+issues: []
+store:
+  current_version: "1.15"
+  current_version_release_date: 2026-10-22
+  synced_at: 2026-10-24

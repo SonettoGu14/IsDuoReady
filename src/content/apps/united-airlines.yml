@@ -1,0 +1,15 @@
+name: United Airlines
+developer: United Airlines
+category: travel
+store_id: "449945214"
+icon: /icons/united-airlines.jpg
+build:
+  sdk: unknown
+  evidence: unknown
+features:
+  - apple-featured
+issues: []
+store:
+  current_version: 4.2.101
+  current_version_release_date: 2026-10-21
+  synced_at: 2026-10-24

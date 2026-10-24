@@ -1,0 +1,265 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Specimen from './Specimen.astro';
+import AppRow from './AppRow.astro';
+import { getLatestUpdate } from '../lib/data';
+import { t } from '../lib/i18n';
+import { getTier } from '../lib/status';
+import type { AppEntry, Category, Locale, Tier } from '../lib/types';
+
+interface Props {
+  lang: Locale;
+  apps: AppEntry[];
+}
+const { lang, apps } = Astro.props;
+const tiers: Exclude<Tier, 'unrated'>[] = ['optimized', 'resizable', 'compatible'];
+const counts = Object.fromEntries(
+  [...tiers, 'unrated'].map((tier) => [tier, apps.filter((app) => getTier(app) === tier).length]),
+);
+const categories = [...new Set(apps.map((app) => app.category))].sort((a, b) =>
+  t(lang, `category.${a}`).localeCompare(t(lang, `category.${b}`)),
+);
+const latest = getLatestUpdate(apps);
+const searchData = apps.map((app) => ({
+  slug: app.id,
+  name: app.name,
+  name_zh: app.name_zh,
+  developer: app.developer,
+  aliases: app.aliases ?? [],
+}));
+const title = `${t(lang, 'site.title')} — IsDuoReady`;
+---
+
+<BaseLayout lang={lang} title={title}>
+  <section class="hero shell">
+    <div class="hero-copy">
+      <h1>{t(lang, 'home.title')}</h1>
+      <p class="hero-subtitle">{t(lang, 'home.subtitle')}</p>
+      <form class="search-box" role="search" id="search-form">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <circle cx="11" cy="11" r="6.5" />
+          <path d="m16 16 4 4" />
+        </svg>
+        <input
+          id="app-search"
+          type="search"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder={t(lang, 'home.search_placeholder').replace('{count}', String(apps.length))}
+          aria-label={t(lang, 'home.search_placeholder').replace('{count}', String(apps.length))}
+        />
+        <kbd aria-hidden="true">⌘K</kbd>
+      </form>
+      <div class="tier-counts" aria-label="Tier counts">
+        {
+          [...tiers, 'unrated' as const].map((tier) => (
+            <button class={`tier-count tier-${tier}`} type="button" data-tier-filter={tier} aria-pressed="false">
+              <span class="tier-dot" aria-hidden="true"></span>
+              <strong>{counts[tier]}</strong>
+              <span>{t(lang, `tier.${tier}`)}</span>
+            </button>
+          ))
+        }
+      </div>
+    </div>
+    <div class="hero-specimens">
+      <div class="pose-toggle" role="group" aria-label={t(lang, 'home.specimen_caption')}>
+        <button type="button" data-pose-value="closed" aria-pressed="false">{t(lang, 'home.pose.closed')}</button>
+        <button type="button" data-pose-value="open" aria-pressed="true" class="is-active">{t(lang, 'home.pose.open')}</button>
+      </div>
+      <div class="specimens" id="specimens" data-pose="open">
+        <Specimen tier="compatible" lang={lang} />
+        <Specimen tier="resizable" lang={lang} />
+        <Specimen tier="optimized" lang={lang} />
+      </div>
+      <p class="specimen-caption">{t(lang, 'home.specimen_caption')}</p>
+    </div>
+  </section>
+
+  <section class="index-section shell" id="apps">
+    <div class="index-toolbar">
+      <div class="filter-chips" role="group" aria-label={t(lang, 'table.tier')}>
+        <button type="button" data-tier-filter="all" class="is-active" aria-pressed="true">{t(lang, 'home.filter.all')} <span>{apps.length}</span></button>
+        {
+          [...tiers, 'unrated' as const].map((tier) => (
+            <button type="button" data-tier-filter={tier} aria-pressed="false">
+              {t(lang, `tier.${tier}`)} <span>{counts[tier]}</span>
+            </button>
+          ))
+        }
+      </div>
+      <div class="filter-controls">
+        <label class="select-wrap">
+          <span class="sr-only">{t(lang, 'home.filter.category')}</span>
+          <select id="category-filter">
+            <option value="all">{t(lang, 'home.filter.category')}</option>
+            {categories.map((category: Category) => <option value={category}>{t(lang, `category.${category}`)}</option>)}
+          </select>
+        </label>
+        <label class="check-control">
+          <input id="verified-filter" type="checkbox" />
+          <span>{t(lang, 'home.filter.verified')}</span>
+        </label>
+        <label class="check-control">
+          <input id="issues-filter" type="checkbox" />
+          <span>{t(lang, 'home.filter.issues')}</span>
+        </label>
+        <label class="select-wrap sort-control">
+          <span>{t(lang, 'home.sort.label')}</span>
+          <select id="sort-filter">
+            <option value="readiness">{t(lang, 'home.sort.readiness')}</option>
+            <option value="recent">{t(lang, 'home.sort.recent')}</option>
+            <option value="name">{t(lang, 'home.sort.name')}</option>
+          </select>
+        </label>
+      </div>
+    </div>
+
+    <div class="table-head" aria-hidden="true">
+      <span>{t(lang, 'table.app')}</span>
+      <span>{t(lang, 'table.tier')}</span>
+      <span>{t(lang, 'table.sdk')}</span>
+      <span>{t(lang, 'table.evidence')}</span>
+      <span>{t(lang, 'table.date')}</span>
+      <span></span>
+    </div>
+    <ul class="app-list" id="app-list">
+      {apps.map((app, index) => <AppRow app={app} lang={lang} eager={index < 6} />)}
+    </ul>
+    <div class="empty-state" id="empty-state" hidden>
+      <p>{t(lang, 'home.empty.title')}</p>
+      <a
+        class="text-link"
+        href="https://github.com/SonettoGu14/IsDuoReady/issues/new?template=report-app.yml"
+        target="_blank"
+        rel="noreferrer"
+      >
+        {t(lang, 'home.empty.action')}
+      </a>
+    </div>
+    <p class="index-meta"><span id="result-count">{apps.length}</span> / {apps.length} · {latest}</p>
+  </section>
+
+  <script is:inline type="application/json" id="app-search-data" set:html={JSON.stringify(searchData)}></script>
+  <script>
+    import Fuse from 'fuse.js';
+
+    type Row = HTMLLIElement & { dataset: DOMStringMap };
+    const rows = Array.from(document.querySelectorAll<Row>('.app-row'));
+    const list = document.querySelector<HTMLUListElement>('#app-list')!;
+    const searchInput = document.querySelector<HTMLInputElement>('#app-search')!;
+    const categorySelect = document.querySelector<HTMLSelectElement>('#category-filter')!;
+    const sortSelect = document.querySelector<HTMLSelectElement>('#sort-filter')!;
+    const verifiedInput = document.querySelector<HTMLInputElement>('#verified-filter')!;
+    const issuesInput = document.querySelector<HTMLInputElement>('#issues-filter')!;
+    const resultCount = document.querySelector<HTMLSpanElement>('#result-count')!;
+    const emptyState = document.querySelector<HTMLDivElement>('#empty-state')!;
+    const searchData = JSON.parse(document.querySelector('#app-search-data')!.textContent!);
+    const fuse = new Fuse<{ slug: string }>(searchData, {
+      keys: ['name', 'name_zh', 'developer', 'aliases'],
+      threshold: 0.32,
+      ignoreLocation: true,
+    });
+    const originalOrder = new Map(rows.map((row, index) => [row.dataset.slug, index]));
+    const state = { q: '', tier: 'all', category: 'all', verified: false, issues: false, sort: 'readiness' };
+
+    function apply() {
+      const query = state.q.trim();
+      const matches = query ? new Set(fuse.search(query).map((result) => result.item.slug)) : null;
+      let visible = 0;
+      for (const row of rows) {
+        const show =
+          (!matches || matches.has(row.dataset.slug!)) &&
+          (state.tier === 'all' || row.dataset.tier === state.tier) &&
+          (state.category === 'all' || row.dataset.category === state.category) &&
+          (!state.verified || ['verified', 'community'].includes(row.dataset.confidence!)) &&
+          (!state.issues || ['minor', 'broken'].includes(row.dataset.health!));
+        row.hidden = !show;
+        if (show) visible++;
+      }
+
+      const sorted = [...rows].sort((a, b) => {
+        if (state.sort === 'recent') return (b.dataset.date || '').localeCompare(a.dataset.date || '');
+        if (state.sort === 'name') return a.dataset.name!.localeCompare(b.dataset.name!);
+        return originalOrder.get(a.dataset.slug)! - originalOrder.get(b.dataset.slug)!;
+      });
+      for (const row of sorted) list.append(row);
+
+      resultCount.textContent = String(visible);
+      emptyState.hidden = visible !== 0;
+      document.querySelectorAll<HTMLButtonElement>('[data-tier-filter]').forEach((button) => {
+        const active = button.dataset.tierFilter === state.tier;
+        button.classList.toggle('is-active', active);
+        button.setAttribute('aria-pressed', String(active));
+      });
+
+      const url = new URL(window.location.href);
+      url.search = '';
+      if (state.q) url.searchParams.set('q', state.q);
+      if (state.tier !== 'all') url.searchParams.set('tier', state.tier);
+      if (state.category !== 'all') url.searchParams.set('category', state.category);
+      if (state.verified) url.searchParams.set('verified', '1');
+      if (state.issues) url.searchParams.set('issues', '1');
+      if (state.sort !== 'readiness') url.searchParams.set('sort', state.sort);
+      history.replaceState(null, '', url);
+    }
+
+    function setTier(tier: string) {
+      state.tier = state.tier === tier ? 'all' : tier;
+      apply();
+    }
+
+    document.querySelectorAll<HTMLButtonElement>('[data-tier-filter]').forEach((button) => {
+      button.addEventListener('click', () => setTier(button.dataset.tierFilter!));
+    });
+    document.querySelector('#search-form')?.addEventListener('submit', (event) => event.preventDefault());
+    searchInput.addEventListener('input', () => { state.q = searchInput.value; apply(); });
+    categorySelect.addEventListener('change', () => { state.category = categorySelect.value; apply(); });
+    sortSelect.addEventListener('change', () => { state.sort = sortSelect.value; apply(); });
+    verifiedInput.addEventListener('change', () => { state.verified = verifiedInput.checked; apply(); });
+    issuesInput.addEventListener('change', () => { state.issues = issuesInput.checked; apply(); });
+
+    document.addEventListener('keydown', (event) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
+        event.preventDefault();
+        searchInput.focus();
+      } else if (event.key === '/' && !['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName ?? '')) {
+        event.preventDefault();
+        searchInput.focus();
+      }
+    });
+
+    const specimens = document.querySelector<HTMLDivElement>('#specimens')!;
+    document.querySelectorAll<HTMLButtonElement>('[data-pose-value]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const pose = button.dataset.poseValue!;
+        specimens.dataset.pose = pose;
+        document.querySelectorAll('[data-pose-value]').forEach((item) => {
+          const active = item === button;
+          item.classList.toggle('is-active', active);
+          item.setAttribute('aria-pressed', String(active));
+        });
+      });
+    });
+
+    const params = new URLSearchParams(window.location.search);
+    state.q = params.get('q') ?? '';
+    state.tier = params.get('tier') ?? 'all';
+    state.category = params.get('category') ?? 'all';
+    state.verified = params.get('verified') === '1';
+    state.issues = params.get('issues') === '1';
+    state.sort = params.get('sort') ?? 'readiness';
+    searchInput.value = state.q;
+    categorySelect.value = state.category;
+    sortSelect.value = state.sort;
+    verifiedInput.checked = state.verified;
+    issuesInput.checked = state.issues;
+    if (state.tier === 'all') {
+      document.querySelectorAll('[data-tier-filter="all"]').forEach((button) => {
+        button.classList.add('is-active');
+        button.setAttribute('aria-pressed', 'true');
+      });
+    }
+    apply();
+  </script>
+</BaseLayout>

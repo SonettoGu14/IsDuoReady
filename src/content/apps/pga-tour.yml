@@ -1,0 +1,15 @@
+name: PGA Tour
+developer: PGATOUR.com LLC
+category: sports
+store_id: "489689106"
+icon: /icons/pga-tour.jpg
+build:
+  sdk: unknown
+  evidence: unknown
+features:
+  - apple-featured
+issues: []
+store:
+  current_version: 2026.4.1
+  current_version_release_date: 2026-10-21
+  synced_at: 2026-10-24

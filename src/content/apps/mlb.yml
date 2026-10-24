@@ -1,0 +1,15 @@
+name: MLB
+developer: MLB
+category: sports
+store_id: "493619333"
+icon: /icons/mlb.jpg
+build:
+  sdk: unknown
+  evidence: unknown
+features:
+  - apple-featured
+issues: []
+store:
+  current_version: 26.18.3
+  current_version_release_date: 2026-10-21
+  synced_at: 2026-10-24

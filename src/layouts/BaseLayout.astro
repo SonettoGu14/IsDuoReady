@@ -1,0 +1,59 @@
+---
+import '@fontsource-variable/archivo/standard.css';
+import '../styles/global.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { t } from '../lib/i18n';
+import { assetPath, switchLocalePath } from '../lib/url';
+import type { Locale } from '../lib/types';
+
+interface Props {
+  lang: Locale;
+  title: string;
+  description?: string;
+}
+
+const { lang, title, description = t(lang, 'site.description') } = Astro.props;
+const site = Astro.site ?? new URL('https://sonettogu14.github.io');
+const currentPath = Astro.url.pathname;
+const canonical = new URL(currentPath, site).href;
+const englishUrl = new URL(switchLocalePath(currentPath, 'en'), site).href;
+const chineseUrl = new URL(switchLocalePath(currentPath, 'zh'), site).href;
+---
+
+<!doctype html>
+<html lang={lang === 'zh' ? 'zh-Hans' : 'en'}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={englishUrl} />
+    <link rel="alternate" hreflang="zh-Hans" href={chineseUrl} />
+    <link rel="alternate" hreflang="x-default" href={englishUrl} />
+    <link rel="icon" href={assetPath('/favicon.svg')} type="image/svg+xml" />
+    <link rel="sitemap" href={assetPath('/sitemap-index.xml')} />
+    <meta name="theme-color" content="#F5F6F3" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="IsDuoReady" />
+    <meta name="twitter:card" content="summary" />
+    <script is:inline>
+      (() => {
+        const stored = localStorage.getItem('duo-theme');
+        const theme = stored ?? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+  </head>
+  <body>
+    <SiteHeader lang={lang} currentPath={currentPath} />
+    <main id="main">
+      <slot />
+    </main>
+    <SiteFooter lang={lang} />
+  </body>
+</html>

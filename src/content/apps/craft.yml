@@ -1,0 +1,15 @@
+name: Craft
+developer: Craft Docs Limited
+category: productivity
+store_id: "1487937127"
+icon: /icons/craft.jpg
+build:
+  sdk: unknown
+  evidence: unknown
+features:
+  - apple-featured
+issues: []
+store:
+  current_version: "3.7"
+  current_version_release_date: 2026-10-10
+  synced_at: 2026-10-24

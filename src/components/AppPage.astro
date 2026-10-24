@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AppIcon from './AppIcon.astro';
+import TierMark from './TierMark.astro';
+import SdkChip from './SdkChip.astro';
+import EvidenceLabel from './EvidenceLabel.astro';
+import CheckList from './CheckList.astro';
+import { getSdkLabel, getSummary, t } from '../lib/i18n';
+import { getHealth, getTier, isStale } from '../lib/status';
+import { localePath } from '../lib/url';
+import type { AppEntry, Locale } from '../lib/types';
+
+interface Props {
+  app: AppEntry;
+  lang: Locale;
+}
+const { app, lang } = Astro.props;
+const tier = getTier(app);
+const health = getHealth(app);
+const summary = getSummary(app, lang);
+const question = lang === 'en' ? `Is ${app.name} iPhone Duo ready?` : `${app.name} 适配 iPhone Duo 吗？`;
+const title = `${question} — IsDuoReady`;
+const storeUrl = app.store_id ? `https://apps.apple.com/app/id${app.store_id}` : null;
+const correctionUrl = `https://github.com/SonettoGu14/IsDuoReady/issues/new?template=correct-data.yml&title=${encodeURIComponent(`[Correction] ${app.name}`)}`;
+const evidenceUrl = `https://github.com/SonettoGu14/IsDuoReady/issues/new?template=report-app.yml&title=${encodeURIComponent(`[Report] ${app.name}`)}`;
+---
+
+<BaseLayout lang={lang} title={title} description={summary.text}>
+  <article class="app-page shell">
+    <a class="back-link" href={localePath(lang, '/')}>← {t(lang, 'app.back')}</a>
+    <div class="app-spread">
+      <section class="verdict-panel">
+        <p class="app-question">{question}</p>
+        <div class="verdict-app">
+          <AppIcon app={app} size="large" eager />
+          <div>
+            <h1>{app.name}</h1>
+            {app.name_zh && app.name_zh !== app.name && <p class="app-name-zh">{app.name_zh}</p>}
+            <p class="app-byline">{app.developer} · {t(lang, `category.${app.category}`)}</p>
+          </div>
+        </div>
+        <div class="verdict-marks">
+          <TierMark app={app} lang={lang} />
+          <SdkChip app={app} />
+          <EvidenceLabel app={app} lang={lang} />
+        </div>
+        {
+          (health === 'broken' || health === 'minor') && (
+            <div class={`issue-banner issue-${health}`}>
+              <strong>{t(lang, 'health.issues')}</strong>
+              <span>{t(lang, `tier.${tier}.description`)}</span>
+            </div>
+          )
+        }
+        {isStale(app) && <div class="stale-banner">{t(lang, 'health.stale')}</div>}
+        <p class="verdict-summary">
+          {summary.text}
+          {summary.isFallback && <span class="summary-fallback">{t(lang, 'summary.fallback')}</span>}
+        </p>
+        {tier !== 'unrated' && <p class="verdict-tier-description">{t(lang, `tier.${tier}.description`)}</p>}
+        <div class="verdict-actions">
+          {storeUrl && <a class="button-primary" href={storeUrl} target="_blank" rel="noreferrer">{t(lang, 'app.store')} ↗</a>}
+          <a class="button-secondary" href={correctionUrl} target="_blank" rel="noreferrer">{t(lang, 'app.correct')}</a>
+        </div>
+        <dl class="app-meta">
+          <div><dt>{t(lang, 'app.build_sdk')}</dt><dd>{getSdkLabel(app)}</dd></div>
+          <div><dt>{t(lang, 'app.build_evidence')}</dt><dd>{app.build.evidence === 'unknown' ? '—' : app.build.evidence}</dd></div>
+          {
+            app.test && (
+              <>
+                <div><dt>{t(lang, 'app.tested_version')}</dt><dd>{app.test.version ?? '—'}</dd></div>
+                <div><dt>{t(lang, 'app.tested_system')}</dt><dd>{app.test.os ?? '—'}</dd></div>
+                <div><dt>{t(lang, 'app.tested_date')}</dt><dd>{app.test.date ?? '—'}</dd></div>
+                <div><dt>{t(lang, 'app.tested_by')}</dt><dd>{app.test.by ?? `${app.test.reports ?? 2} reports`}</dd></div>
+              </>
+            )
+          }
+        </dl>
+      </section>
+
+      <div class="app-hinge" aria-hidden="true"></div>
+
+      <section class="evidence-panel">
+        <div class="panel-section">
+          <h2>{t(lang, 'app.checklist')}</h2>
+          <CheckList app={app} lang={lang} />
+        </div>
+
+        {
+          app.features.length > 0 && (
+            <div class="panel-section">
+              <h2>{t(lang, 'app.features')}</h2>
+              <ul class="feature-list">
+                {app.features.map((feature) => <li>{t(lang, `feature.${feature}`)}</li>)}
+              </ul>
+            </div>
+          )
+        }
+
+        {
+          app.issues.length > 0 && (
+            <div class="panel-section">
+              <h2>{t(lang, 'app.issues')}</h2>
+              <ul class="issue-list">
+                {app.issues.map((issue) => (
+                  <li class={`issue-${issue.severity}`}>
+                    <strong>{issue.title}</strong>
+                    {issue.evidence && <a href={issue.evidence} target="_blank" rel="noreferrer">{t(lang, 'app.evidence')} ↗</a>}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )
+        }
+
+        <div class="panel-section">
+          <h2>{t(lang, 'app.evidence')}</h2>
+          {
+            app.build.source && (
+              <p>
+                <a class="text-link" href={app.build.source} target="_blank" rel="noreferrer">
+                  {t(lang, 'app.build_evidence')} ↗
+                </a>
+              </p>
+            )
+          }
+          <p class="muted-copy">{t(lang, 'app.no_evidence')}</p>
+          <a class="text-link" href={evidenceUrl} target="_blank" rel="noreferrer">{t(lang, 'app.submit_evidence')}</a>
+        </div>
+      </section>
+    </div>
+  </article>
+</BaseLayout>

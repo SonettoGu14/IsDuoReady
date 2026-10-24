@@ -1,0 +1,169 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { t } from '../lib/i18n';
+import { CHECKS, type Locale } from '../lib/types';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const formChecks = CHECKS.filter((key) => !['media', 'camera', 'camera_safe'].includes(key));
+const copy = {
+  en: {
+    stepsTitle: 'What happens next',
+    steps: [
+      'You submit the observed tier, app version, and screenshots.',
+      'A maintainer checks the evidence. Broken status needs a maintainer test or two independent reports.',
+      'The app YAML changes through a reviewed pull request, then GitHub Pages redeploys.',
+    ],
+    unknown: 'Not sure',
+    reportPlaceholder: 'Anything reproducible: the screen, pose, and what went wrong.',
+  },
+  zh: {
+    stepsTitle: '接下来会发生什么',
+    steps: [
+      '你提交观察到的档位、应用版本和截图。',
+      '维护者核对证据。红色问题状态需要维护者实测或两份独立报告。',
+      '应用 YAML 经过 PR 审核后合并，GitHub Pages 自动重新部署。',
+    ],
+    unknown: '不确定',
+    reportPlaceholder: '写下可复现的信息：哪个界面、什么形态、出了什么问题。',
+  },
+} as const;
+const c = copy[lang];
+---
+
+<BaseLayout lang={lang} title={`${t(lang, 'contribute.title')} — IsDuoReady`} description={t(lang, 'contribute.intro')}>
+  <section class="page-hero shell">
+    <h1>{t(lang, 'contribute.title')}</h1>
+    <p>{t(lang, 'contribute.intro')}</p>
+  </section>
+
+  <div class="contribute-grid shell">
+    <form class="report-form" id="report-form">
+      <div class="form-field">
+        <label for="report-app">{t(lang, 'contribute.form.app')} *</label>
+        <input id="report-app" name="app" required autocomplete="off" />
+      </div>
+      <div class="form-field">
+        <label for="report-store">{t(lang, 'contribute.form.store')}</label>
+        <input id="report-store" name="store" type="url" inputmode="url" placeholder="https://apps.apple.com/app/id…" />
+      </div>
+      <div class="form-pair">
+        <div class="form-field">
+          <label for="report-version">{t(lang, 'contribute.form.version')}</label>
+          <input id="report-version" name="version" autocomplete="off" placeholder="4.1.2" />
+        </div>
+        <div class="form-field">
+          <label for="report-os">{t(lang, 'contribute.form.os')}</label>
+          <input id="report-os" name="os" autocomplete="off" placeholder="27.1" />
+        </div>
+      </div>
+      <div class="form-field">
+        <label for="report-tier">{t(lang, 'contribute.form.tier')}</label>
+        <select id="report-tier" name="tier">
+          <option value="unknown">{c.unknown}</option>
+          <option value="optimized">{t(lang, 'tier.optimized')} · 27.1 SDK</option>
+          <option value="resizable">{t(lang, 'tier.resizable')} · 27.0 SDK</option>
+          <option value="compatible">{t(lang, 'tier.compatible')} · ≤26 SDK</option>
+        </select>
+      </div>
+
+      <fieldset class="form-checks">
+        <legend>{t(lang, 'contribute.form.checks')}</legend>
+        {formChecks.map((key) => (
+          <label class="form-check-row">
+            <span>{t(lang, `check.${key}`)}</span>
+            <select data-check={key}>
+              <option value="unknown">{t(lang, 'check.unknown')}</option>
+              <option value="pass">{t(lang, 'check.pass')}</option>
+              <option value="fail">{t(lang, 'check.fail')}</option>
+              <option value="na">{t(lang, 'check.na')}</option>
+            </select>
+          </label>
+        ))}
+      </fieldset>
+
+      <div class="form-field">
+        <label for="report-notes">{t(lang, 'contribute.form.notes')}</label>
+        <textarea id="report-notes" rows="4" placeholder={c.reportPlaceholder}></textarea>
+      </div>
+      <p class="form-hint">{t(lang, 'contribute.form.hint')}</p>
+      <div class="form-actions">
+        <button class="button-primary" type="button" id="copy-report">{t(lang, 'contribute.form.copy')}</button>
+        <button class="button-secondary" type="button" id="open-issue">{t(lang, 'contribute.form.issue')}</button>
+        <button class="button-quiet" type="reset">{t(lang, 'contribute.form.reset')}</button>
+      </div>
+      <textarea id="report-output" class="report-output" rows="12" readonly hidden></textarea>
+    </form>
+
+    <aside class="contribute-aside">
+      <h2>{c.stepsTitle}</h2>
+      <ol class="contribute-steps">
+        {c.steps.map((step, index) => <li><span>{index + 1}</span><p>{step}</p></li>)}
+      </ol>
+    </aside>
+  </div>
+
+  <script>
+    const form = document.querySelector<HTMLFormElement>('#report-form')!;
+    const output = document.querySelector<HTMLTextAreaElement>('#report-output')!;
+    const copyButton = document.querySelector<HTMLButtonElement>('#copy-report')!;
+    const issueButton = document.querySelector<HTMLButtonElement>('#open-issue')!;
+
+    function field(id: string): string {
+      return document.querySelector<HTMLInputElement>(`#${id}`)?.value.trim() ?? '';
+    }
+
+    function buildReport(): string {
+      const app = field('report-app') || '(app name)';
+      const lines = [
+        '## App / 应用',
+        `Name: ${app}`,
+        `App Store: ${field('report-store') || '—'}`,
+        `Tested version: ${field('report-version') || '—'}`,
+        `iOS: ${field('report-os') || '—'}`,
+        `Observed tier: ${field('report-tier')}`,
+        '',
+        '## Device checks / 实机检查',
+      ];
+      document.querySelectorAll<HTMLSelectElement>('[data-check]').forEach((select) => {
+        lines.push(`- ${select.dataset.check}: ${select.value}`);
+      });
+      lines.push('', '## Notes / 备注', field('report-notes') || '—', '', '## Screenshots / 截图', 'Please attach outer, inner, and half-folded screenshots. 请附外屏、内屏和半折截图。');
+      return lines.join('\n');
+    }
+
+    copyButton.addEventListener('click', async () => {
+      const report = buildReport();
+      output.value = report;
+      output.hidden = false;
+      try {
+        await navigator.clipboard.writeText(report);
+      } catch {
+        output.focus();
+        output.select();
+        return;
+      }
+      const original = copyButton.textContent;
+      copyButton.textContent = document.documentElement.lang === 'zh-Hans' ? '已复制报告' : 'Report copied';
+      setTimeout(() => { copyButton.textContent = original; }, 1800);
+    });
+
+    issueButton.addEventListener('click', () => {
+      const app = field('report-app');
+      if (!app) {
+        document.querySelector<HTMLInputElement>('#report-app')!.focus();
+        return;
+      }
+      const params = new URLSearchParams({
+        title: `[Report] ${app}`,
+        body: buildReport(),
+        labels: 'report,needs-verification',
+      });
+      window.open(`https://github.com/SonettoGu14/IsDuoReady/issues/new?${params}`, '_blank', 'noopener');
+    });
+
+    form.addEventListener('reset', () => { output.hidden = true; });
+  </script>
+</BaseLayout>

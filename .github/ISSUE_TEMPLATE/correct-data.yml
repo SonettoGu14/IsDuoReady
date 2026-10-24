@@ -1,0 +1,37 @@
+name: Data correction / 数据纠错
+description: Correct a link, version, tier, or app record / 修正链接、版本、档位或应用记录
+title: "[Correction] "
+labels: ["correction"]
+body:
+  - type: input
+    id: app
+    attributes:
+      label: App name / 应用名称
+    validations:
+      required: true
+  - type: input
+    id: field
+    attributes:
+      label: Field to correct / 需要修正的字段
+      placeholder: tier, store_id, version, developer…
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Correct value and reason / 正确值与理由
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence link / 证据链接
+      description: Release notes, developer statement, screenshot, or binary metadata.
+    validations:
+      required: true
+  - type: checkboxes
+    id: developer
+    attributes:
+      label: Are you the developer? / 你是开发者吗？
+      options:
+        - label: I work on this app and can provide build metadata. / 我参与此应用开发，可以提供构建信息。

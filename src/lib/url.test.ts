@@ -1,0 +1,45 @@
+import { describe, expect, it } from 'vitest';
+import { appPath, assetPath, localePath, normalizeBase, switchLocalePath } from './url';
+
+describe('normalizeBase', () => {
+  it('normalizes root and project-page base paths', () => {
+    expect(normalizeBase('/')).toBe('');
+    expect(normalizeBase('/IsDuoReady/')).toBe('/IsDuoReady');
+    expect(normalizeBase('IsDuoReady')).toBe('/IsDuoReady');
+  });
+});
+
+describe('localePath', () => {
+  it('builds unprefixed English and prefixed Chinese project-page URLs', () => {
+    expect(localePath('en', '/', '/IsDuoReady')).toBe('/IsDuoReady/');
+    expect(localePath('zh', '/', '/IsDuoReady')).toBe('/IsDuoReady/zh/');
+    expect(localePath('en', '/method/', '/IsDuoReady')).toBe('/IsDuoReady/method/');
+    expect(localePath('zh', '/method/', '/IsDuoReady')).toBe('/IsDuoReady/zh/method/');
+  });
+
+  it('does not double-prefix the base path', () => {
+    expect(appPath('zh', 'fantastical', '/IsDuoReady')).toBe(
+      '/IsDuoReady/zh/app/fantastical/',
+    );
+  });
+});
+
+describe('assetPath', () => {
+  it('keeps public assets under the GitHub Pages base path', () => {
+    expect(assetPath('/icons/fantastical.jpg', '/IsDuoReady')).toBe(
+      '/IsDuoReady/icons/fantastical.jpg',
+    );
+    expect(assetPath('favicon.svg', '/')).toBe('/favicon.svg');
+  });
+});
+
+describe('switchLocalePath', () => {
+  it('preserves the current page when switching languages', () => {
+    expect(switchLocalePath('/IsDuoReady/app/fantastical/', 'zh', '/IsDuoReady')).toBe(
+      '/IsDuoReady/zh/app/fantastical/',
+    );
+    expect(switchLocalePath('/IsDuoReady/zh/app/fantastical/', 'en', '/IsDuoReady')).toBe(
+      '/IsDuoReady/app/fantastical/',
+    );
+  });
+});

@@ -1,0 +1,15 @@
+name: edjing Mix
+developer: MWM
+category: music
+store_id: "493226494"
+icon: /icons/edjing-mix.jpg
+build:
+  sdk: unknown
+  evidence: unknown
+features:
+  - apple-featured
+issues: []
+store:
+  current_version: 9.4.0
+  current_version_release_date: 2026-10-22
+  synced_at: 2026-10-24

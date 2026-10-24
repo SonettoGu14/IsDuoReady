@@ -1,0 +1,15 @@
+name: KakaoPage
+developer: Kakao Entertainment Corp.
+category: reading
+store_id: "616643813"
+icon: /icons/kakaopage.jpg
+build:
+  sdk: unknown
+  evidence: unknown
+features:
+  - apple-featured
+issues: []
+store:
+  current_version: 7.34.2
+  current_version_release_date: 2026-10-22
+  synced_at: 2026-10-24

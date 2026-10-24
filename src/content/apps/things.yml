@@ -1,0 +1,17 @@
+name: Things
+developer: Cultured Code GmbH & Co. KG
+category: productivity
+store_id: "904237743"
+icon: /icons/things.jpg
+aliases:
+  - Things 3
+build:
+  sdk: unknown
+  evidence: unknown
+features:
+  - apple-featured
+issues: []
+store:
+  current_version: 3.25.1
+  current_version_release_date: 2026-10-22
+  synced_at: 2026-10-24

@@ -1,0 +1,15 @@
+name: UnGodly
+developer: Azra Games
+category: games
+store_id: "6740617332"
+icon: /icons/ungodly.jpg
+build:
+  sdk: unknown
+  evidence: unknown
+features:
+  - apple-featured
+issues: []
+store:
+  current_version: 0.17.1
+  current_version_release_date: 2026-11-11
+  synced_at: 2026-10-24

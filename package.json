@@ -1,0 +1,36 @@
+{
+  "name": "isduoready",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A bilingual, community-verified index of iPhone Duo app adaptation.",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "check:data": "tsx scripts/validate.ts",
+    "test": "vitest run",
+    "ci": "npm run check:data && npm test && npm run check && npm run build",
+    "sync": "tsx scripts/sync-store.ts"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource-variable/archivo": "^5.3.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.4.2",
+    "fuse.js": "^7.5.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^5.9.3",
+    "yaml": "^2.9.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "tsx": "^4.23.15",
+    "vitest": "^5.0.5"
+  }
+}

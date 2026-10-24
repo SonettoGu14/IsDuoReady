@@ -1,0 +1,28 @@
+---
+import { assetPath } from '../lib/url';
+import type { AppEntry } from '../lib/types';
+
+interface Props {
+  app: AppEntry;
+  size?: 'small' | 'medium' | 'large';
+  eager?: boolean;
+}
+const { app, size = 'medium', eager = false } = Astro.props;
+const initials = app.name.replace(/[^A-Za-z0-9\u4e00-\u9fff]/g, '').slice(0, 2).toUpperCase();
+---
+
+{
+  app.icon ? (
+    <img
+      class={`app-icon app-icon-${size}`}
+      src={assetPath(app.icon)}
+      alt=""
+      width={size === 'large' ? 144 : size === 'medium' ? 72 : 48}
+      height={size === 'large' ? 144 : size === 'medium' ? 72 : 48}
+      loading={eager ? 'eager' : 'lazy'}
+      decoding="async"
+    />
+  ) : (
+    <span class={`app-icon app-icon-fallback app-icon-${size}`} aria-hidden="true">{initials}</span>
+  )
+}

@@ -1,0 +1,17 @@
+name: Microsoft Outlook
+developer: Microsoft Corporation
+category: productivity
+store_id: "951937596"
+icon: /icons/microsoft-outlook.jpg
+aliases:
+  - Outlook
+build:
+  sdk: unknown
+  evidence: unknown
+features:
+  - apple-featured
+issues: []
+store:
+  current_version: 5.2641.0
+  current_version_release_date: 2026-10-19
+  synced_at: 2026-10-24

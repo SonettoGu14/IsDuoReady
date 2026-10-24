@@ -1,0 +1,15 @@
+name: Tripsy
+developer: Tripsy LLC
+category: travel
+store_id: "1429967544"
+icon: /icons/tripsy.jpg
+build:
+  sdk: unknown
+  evidence: unknown
+features:
+  - apple-featured
+issues: []
+store:
+  current_version: 3.10.5
+  current_version_release_date: 2026-10-23
+  synced_at: 2026-10-24

@@ -1,0 +1,22 @@
+---
+import { t } from '../lib/i18n';
+import { localePath } from '../lib/url';
+import type { Locale } from '../lib/types';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+---
+
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <p class="footer-disclaimer">{t(lang, 'footer.disclaimer')}</p>
+    <div class="footer-links">
+      <a href="https://github.com/SonettoGu14/IsDuoReady" target="_blank" rel="noreferrer">{t(lang, 'footer.github')}</a>
+      <a href={localePath(lang, '/method/')}>{t(lang, 'nav.method')}</a>
+      <a href={localePath(lang, '/contribute/')}>{t(lang, 'nav.contribute')}</a>
+    </div>
+    <p class="footer-license">{t(lang, 'footer.data')}</p>
+  </div>
+</footer>

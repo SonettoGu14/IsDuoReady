@@ -1,0 +1,35 @@
+---
+import { t } from '../lib/i18n';
+import type { Locale, Tier } from '../lib/types';
+
+interface Props {
+  tier: Exclude<Tier, 'unrated'>;
+  lang: Locale;
+  annotated?: boolean;
+}
+const { tier, lang, annotated = false } = Astro.props;
+const sdk = tier === 'optimized' ? '27.1 SDK' : tier === 'resizable' ? '27.0 SDK' : '≤26 SDK';
+---
+
+<figure class={`specimen ${annotated ? 'is-annotated' : ''}`} data-tier={tier}>
+  <div class="specimen-device">
+    <span class="specimen-safe" aria-hidden="true"></span>
+    <span class="specimen-hinge" aria-hidden="true"></span>
+    <span class="specimen-camera" aria-hidden="true"></span>
+    <div class="specimen-app" aria-hidden="true">
+      <span class="specimen-hero"></span>
+      <span class="specimen-line line-long"></span>
+      <span class="specimen-line line-short"></span>
+      <span class="specimen-tiles"><i></i><i></i><i></i><i></i></span>
+    </div>
+    <span class="specimen-vertical-bar" aria-hidden="true"><i></i><i></i><i></i></span>
+    {annotated && <span class="specimen-callout" aria-hidden="true"></span>}
+  </div>
+  <figcaption>
+    <span class={`tier-mark tier-${tier} is-solid`}>
+      <span class="tier-dot" aria-hidden="true"></span>
+      <span>{t(lang, `tier.${tier}`)}</span>
+    </span>
+    <span class="specimen-sdk">{sdk}</span>
+  </figcaption>
+</figure>

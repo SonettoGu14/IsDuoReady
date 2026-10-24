@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Apple: Prepare for iPhone Duo
+    url: https://developer.apple.com/iphone-duo/prepare/
+    about: Apple's official build-SDK and layout guidance.
+  - name: Testing guide / 实机测试指南
+    url: https://github.com/SonettoGu14/IsDuoReady/blob/main/TESTING.md
+    about: The 30-second device check and evidence checklist.

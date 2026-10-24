@@ -1,0 +1,8 @@
+---
+import HomePage from '../../components/HomePage.astro';
+import { getApps } from '../../lib/data';
+
+const apps = await getApps();
+---
+
+<HomePage lang="zh" apps={apps} />

@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Specimen from './Specimen.astro';
+import { t } from '../lib/i18n';
+import { localePath } from '../lib/url';
+import type { Locale } from '../lib/types';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const copy = {
+  en: {
+    tiers: [
+      {
+        title: 'Compatible · iOS 26 SDK or earlier',
+        body: 'The app runs, but it does not follow every Duo layout. Open, it appears as a centered window with unused space around it. Closed, its content sits beside the status bar and camera.',
+      },
+      {
+        title: 'Resizable · iOS 27.0 SDK',
+        body: 'The app resizes when the device folds and unfolds. It fills most of the inner display, but still avoids the status-bar edge. Standard bars remain horizontal.',
+      },
+      {
+        title: 'Optimized · iOS 27.1 SDK or later',
+        body: 'The app can extend edge to edge on both displays. Toolbars and tab bars move below the status bar in a vertical layout. New APIs cover reserved regions, arrangement views, the hinge, scenes, and cameras.',
+      },
+    ],
+    confusion: [
+      ['Build SDK', 'The SDK linked into the app binary, for example iphoneos27.1.', 'This sets the build tier.'],
+      ['Xcode version', 'The tool used to build, for example Xcode 27.1.', 'A useful clue, not the criterion itself.'],
+      ['Runtime iOS', 'The system version on the device, for example iOS 27.1.1.', 'It does not turn an old build into a Duo-optimized one.'],
+      ['App Store badge', 'The Made for iPhone Duo badge on a product page.', 'A store signal, not proof of a build tier or a good layout.'],
+    ],
+    steps: [
+      ['Open the app unfolded', 'A centered window with empty space points to Compatible. A nearly full layout points to Resizable. Edge-to-edge content points to Optimized.'],
+      ['Look at the status-bar edge', 'A remaining strip on that side is the classic iOS 27.0 SDK signature. Full-bleed content plus vertical system bars points to 27.1.'],
+      ['Fold it halfway', 'Buttons, sheets, subtitles, and keyboards should not sit in the folding region. Content should move or split deliberately.'],
+      ['Close it and check the outer display', 'Controls should avoid the camera corner. The app should not leave a large unused band.'],
+      ['Try Split View, then fold and unfold', 'Both apps should resize correctly. Your scroll position, video, call, or draft should survive the transition.'],
+    ],
+    evidence: [
+      ['Binary', 'DTSDKName or LC_BUILD_VERSION read from an app binary.', 'Strongest build evidence; suitable for spot checks.'],
+      ['Developer', 'A developer statement or release notes that name the build SDK.', 'Strong claim, still distinct from a device test.'],
+      ['Observed', 'A maintainer test or two independent reports with screenshots.', 'Strong behavior evidence.'],
+      ['Inferred', 'A tier inferred from visible layout signatures.', 'Shown with a dashed badge, never presented as a binary fact.'],
+    ],
+    caution: 'Optimized does not mean bug-free. Resizable does not mean broken. Unrated means we do not know, not that an app failed.',
+    source: 'Read Apple’s preparation guide',
+  },
+  zh: {
+    tiers: [
+      {
+        title: '可运行 · iOS 26 SDK 或更早',
+        body: 'app 能运行，但不会跟随所有 Duo 布局。展开时显示为居中窗口，四周有空白；合上时内容挤在状态栏和摄像头一侧。',
+      },
+      {
+        title: '可缩放 · iOS 27.0 SDK',
+        body: 'app 会跟随折叠和展开缩放，内屏接近全宽，但仍避开状态栏一侧。标准系统栏保持横向。',
+      },
+      {
+        title: '已优化 · iOS 27.1 SDK 或更高',
+        body: 'app 可以在内外屏都延伸到边缘。工具栏和标签栏会在状态栏下方竖排。新 API 覆盖保留区域、arrangement view、铰链、场景和相机。',
+      },
+    ],
+    confusion: [
+      ['构建 SDK', '链接进 app 二进制的 SDK，例如 iphoneos27.1。', '它决定构建档位。'],
+      ['Xcode 版本', '用于构建的工具，例如 Xcode 27.1。', '是线索，不是判据本身。'],
+      ['运行时 iOS', '设备上的系统版本，例如 iOS 27.1.1。', '不会把旧构建自动变成 Duo 优化。'],
+      ['App Store 徽章', '产品页上的 Made for iPhone Duo 徽章。', '是商店信号，不能证明构建档位或布局质量。'],
+    ],
+    steps: [
+      ['展开后打开 app', '居中且四周有空白，通常是可运行；接近全宽，通常是可缩放；顶到边缘，通常是已优化。'],
+      ['看状态栏一侧', '那一侧仍留一条边，是 iOS 27.0 SDK 的典型特征；全宽内容加竖排系统栏，指向 27.1。'],
+      ['半折设备', '按钮、弹窗、字幕和键盘不应落在折叠区域里。内容应当主动移开或分栏。'],
+      ['合上检查外屏', '控件应避开摄像头角落，不应留下整条空白。'],
+      ['试 Split View，再折叠和展开', '两个 app 都应正确缩放；滚动位置、视频、通话或草稿不应丢失。'],
+    ],
+    evidence: [
+      ['二进制', '从 app 二进制读取 DTSDKName 或 LC_BUILD_VERSION。', '最强的构建证据，适合人工抽检。'],
+      ['开发者', '开发者说明或 release notes 明确写出构建 SDK。', '强声明，但仍不等于实机测试。'],
+      ['实机观察', '维护者实测，或两份独立的带截图报告。', '强的行为证据。'],
+      ['截图推断', '根据可见布局特征推断档位。', '用虚线徽章展示，不冒充二进制事实。'],
+    ],
+    caution: '已优化不等于没有 bug；可缩放不等于坏了；未评级只是我们不知道，不是测试失败。',
+    source: '阅读 Apple 的适配指南',
+  },
+} as const;
+const c = copy[lang];
+---
+
+<BaseLayout lang={lang} title={`${t(lang, 'method.title')} — IsDuoReady`} description={t(lang, 'method.intro')}>
+  <section class="page-hero shell">
+    <h1>{t(lang, 'method.title')}</h1>
+    <p>{t(lang, 'method.intro')}</p>
+  </section>
+
+  <section class="method-section shell">
+    <h2>{t(lang, 'method.tiers_title')}</h2>
+    <div class="method-specimens">
+      <Specimen tier="compatible" lang={lang} annotated />
+      <Specimen tier="resizable" lang={lang} annotated />
+      <Specimen tier="optimized" lang={lang} annotated />
+    </div>
+    <div class="tier-explanations">
+      {c.tiers.map((tier, index) => (
+        <section>
+          <span class={`tier-dot tier-${['compatible', 'resizable', 'optimized'][index]}`} aria-hidden="true"></span>
+          <h3>{tier.title}</h3>
+          <p>{tier.body}</p>
+        </section>
+      ))}
+    </div>
+    <p class="method-caution">{c.caution}</p>
+    <a class="text-link" href="https://developer.apple.com/iphone-duo/prepare/" target="_blank" rel="noreferrer">{c.source} ↗</a>
+  </section>
+
+  <section class="method-section shell">
+    <h2>{t(lang, 'method.confusion_title')}</h2>
+    <div class="method-table" role="table">
+      {c.confusion.map(([name, description, verdict]) => (
+        <div class="method-table-row" role="row">
+          <strong role="cell">{name}</strong>
+          <p role="cell">{description}</p>
+          <p role="cell">{verdict}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="method-section shell">
+    <h2>{t(lang, 'method.test_title')}</h2>
+    <ol class="method-steps">
+      {c.steps.map(([title, body], index) => (
+        <li>
+          <span class="step-number">{String(index + 1).padStart(2, '0')}</span>
+          <div><h3>{title}</h3><p>{body}</p></div>
+        </li>
+      ))}
+    </ol>
+    <a class="button-primary" href={localePath(lang, '/contribute/')}>{t(lang, 'nav.contribute')}</a>
+  </section>
+
+  <section class="method-section shell">
+    <h2>{t(lang, 'method.evidence_title')}</h2>
+    <div class="method-table" role="table">
+      {c.evidence.map(([name, description, verdict]) => (
+        <div class="method-table-row" role="row">
+          <strong role="cell">{name}</strong>
+          <p role="cell">{description}</p>
+          <p role="cell">{verdict}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

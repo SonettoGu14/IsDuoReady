@@ -1,0 +1,14 @@
+---
+import { getEvidenceLabel } from '../lib/i18n';
+import { getConfidence } from '../lib/status';
+import type { AppEntry, Locale } from '../lib/types';
+
+interface Props {
+  app: AppEntry;
+  lang: Locale;
+}
+const { app, lang } = Astro.props;
+const confidence = getConfidence(app);
+---
+
+<span class={`evidence-label evidence-${confidence}`}>{getEvidenceLabel(app, lang)}</span>

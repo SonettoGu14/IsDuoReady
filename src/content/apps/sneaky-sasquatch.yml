@@ -1,0 +1,15 @@
+name: Sneaky Sasquatch
+developer: RAC7 Games
+category: games
+store_id: "1098342019"
+icon: /icons/sneaky-sasquatch.jpg
+build:
+  sdk: unknown
+  evidence: unknown
+features:
+  - apple-featured
+issues: []
+store:
+  current_version: 2.2.1
+  current_version_release_date: 2026-10-23
+  synced_at: 2026-10-24

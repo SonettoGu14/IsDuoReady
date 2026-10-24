@@ -1,0 +1,20 @@
+name: rednote
+name_zh: 小红书
+developer: Xingin
+category: social
+store_id: "741292507"
+icon: /icons/rednote.jpg
+aliases:
+  - 小红书
+  - Xiaohongshu
+  - RED
+build:
+  sdk: unknown
+  evidence: unknown
+features:
+  - apple-featured
+issues: []
+store:
+  current_version: 9.51.1
+  current_version_release_date: 2026-10-20
+  synced_at: 2026-10-24

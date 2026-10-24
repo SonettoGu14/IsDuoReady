@@ -1,0 +1,15 @@
+name: Paramount+
+developer: CBS Interactive
+category: entertainment
+store_id: "530168168"
+icon: /icons/paramount-plus.jpg
+build:
+  sdk: unknown
+  evidence: unknown
+features:
+  - apple-featured
+issues: []
+store:
+  current_version: 15.28.1
+  current_version_release_date: 2026-10-22
+  synced_at: 2026-10-24

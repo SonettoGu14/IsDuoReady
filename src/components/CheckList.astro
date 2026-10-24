@@ -1,0 +1,45 @@
+---
+import { t } from '../lib/i18n';
+import { CHECKS, type AppEntry, type Locale } from '../lib/types';
+
+interface Props {
+  app: AppEntry;
+  lang: Locale;
+}
+const { app, lang } = Astro.props;
+const checks = app.test?.checks;
+---
+
+{
+  checks ? (
+    <ul class="check-list">
+      {CHECKS.map((key) => {
+        const value = checks[key] ?? 'unknown';
+        return (
+          <li class={`check-row check-${value}`}>
+            <span class="check-symbol" aria-hidden="true">
+              {value === 'pass' ? '✓' : value === 'fail' ? '×' : value === 'na' ? '—' : '?'}
+            </span>
+            <span class="check-copy">
+              <strong>{t(lang, `check.${key}`)}</strong>
+              <span>{t(lang, `check.${key}.note`)}</span>
+            </span>
+            <span class="check-value">{t(lang, `check.${value}`)}</span>
+          </li>
+        );
+      })}
+    </ul>
+  ) : (
+    <div class="empty-panel">
+      <p>{t(lang, 'app.no_checklist')}</p>
+      <a
+        class="text-link"
+        href={`https://github.com/SonettoGu14/IsDuoReady/issues/new?template=report-app.yml&title=${encodeURIComponent(`[Report] ${app.name}`)}`}
+        target="_blank"
+        rel="noreferrer"
+      >
+        {t(lang, 'app.submit_evidence')}
+      </a>
+    </div>
+  )
+}
