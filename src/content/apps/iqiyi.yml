@@ -9,7 +9,7 @@ aliases: ["爱奇艺视频"]
 build:
   sdk: unknown
   evidence: unknown
-features: []
+features: [apple-featured]
 issues: []
 store:
   current_version: "17.10.3"

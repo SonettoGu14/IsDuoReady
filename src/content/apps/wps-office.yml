@@ -9,7 +9,7 @@ aliases: ["WPS", "金山办公"]
 build:
   sdk: unknown
   evidence: unknown
-features: []
+features: [apple-featured]
 issues: []
 store:
   current_version: "26.10.1"

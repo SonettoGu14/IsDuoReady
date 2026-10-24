@@ -9,7 +9,7 @@ aliases: ["淘宝网"]
 build:
   sdk: unknown
   evidence: unknown
-features: []
+features: [apple-featured]
 issues: []
 store:
   current_version: "10.68.0"

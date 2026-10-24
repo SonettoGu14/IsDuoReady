@@ -9,7 +9,7 @@ aliases: ["高德", "Gaode"]
 build:
   sdk: unknown
   evidence: unknown
-features: []
+features: [apple-featured]
 issues: []
 store:
   current_version: "17.2.1"
