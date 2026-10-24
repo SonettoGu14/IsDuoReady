@@ -92,15 +92,15 @@ export function compareApps(a: AppEntry, b: AppEntry, locale: Locale = 'en'): nu
   const bBroken = getHealth(b) === 'broken' ? 1 : 0;
   if (aBroken !== bBroken) return aBroken - bBroken;
 
+  const aRank = a.rank ?? Number.POSITIVE_INFINITY;
+  const bRank = b.rank ?? Number.POSITIVE_INFINITY;
+  if (aRank !== bRank) return aRank - bRank;
+
   const tierDifference = TIER_ORDER[getTier(a)] - TIER_ORDER[getTier(b)];
   if (tierDifference !== 0) return tierDifference;
 
   const confidenceDifference = CONFIDENCE_ORDER[getConfidence(a)] - CONFIDENCE_ORDER[getConfidence(b)];
   if (confidenceDifference !== 0) return confidenceDifference;
-
-  const aRank = a.rank ?? Number.POSITIVE_INFINITY;
-  const bRank = b.rank ?? Number.POSITIVE_INFINITY;
-  if (aRank !== bRank) return aRank - bRank;
 
   const aName = locale === 'zh' && a.name_zh ? a.name_zh : a.name;
   const bName = locale === 'zh' && b.name_zh ? b.name_zh : b.name;

@@ -137,6 +137,25 @@ describe('getHealth', () => {
 });
 
 describe('compareApps', () => {
+  it('uses the App Store rank ahead of tier for the default order', () => {
+    const optimized = app({
+      id: 'optimized',
+      name: 'Optimized',
+      rank: 20,
+      build: { sdk: '27.1', evidence: 'observed' },
+    });
+    const compatible = app({
+      id: 'compatible',
+      name: 'Compatible',
+      rank: 1,
+      build: { sdk: '26', evidence: 'observed' },
+    });
+    expect([optimized, compatible].sort(compareApps).map((entry) => entry.id)).toEqual([
+      'compatible',
+      'optimized',
+    ]);
+  });
+
   it('uses the China popularity rank before the name', () => {
     const first = app({ id: 'first', name: 'Zulu', rank: 1 });
     const second = app({ id: 'second', name: 'Alpha', rank: 2 });

@@ -29,9 +29,13 @@ const search = [app.name, app.name_zh, app.developer, ...(app.aliases ?? [])]
   class={`app-row health-${health}`}
   data-slug={app.id}
   data-tier={tier}
+  data-tier-order={['optimized', 'resizable', 'compatible', 'unrated'].indexOf(tier)}
   data-category={app.category}
   data-confidence={confidence}
+  data-confidence-order={['verified', 'community', 'claimed', 'inferred', 'unverified'].indexOf(confidence)}
   data-health={health}
+  data-broken={health === 'broken' ? '1' : '0'}
+  data-rank={app.rank ?? 9999}
   data-date={checkedDate}
   data-name={displayName.toLocaleLowerCase()}
   data-search={search}
