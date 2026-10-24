@@ -1,17 +1,26 @@
-name: "Freshippo"
-name_zh: "盒马"
+name: Freshippo
+name_zh: 盒马
 rank: 45
-developer: "Shanghai Heli Network Technical Service Co., Ltd."
+developer: Shanghai Heli Network Technical Service Co., Ltd.
 category: food
-store_id: "1063183999"
+store_id: '1063183999'
 icon: /icons/freshippo.jpg
-aliases: ["盒马鲜生"]
+aliases:
+- 盒马鲜生
 build:
-  sdk: unknown
-  evidence: unknown
+  sdk: '26'
+  evidence: observed
+  checked: '2026-10-24'
 features: []
 issues: []
 store:
-  current_version: "8.11.0"
-  current_version_release_date: "2026-10-19"
-  synced_at: "2026-10-24"
+  current_version: 8.11.0
+  current_version_release_date: '2026-10-19'
+  synced_at: '2026-10-24'
+test:
+  confidence: verified
+  version: 8.11.0
+  os: '27.1'
+  date: '2026-10-24'
+  by: '@SonettoGu14'
+  device: iPhone Duo

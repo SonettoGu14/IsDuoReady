@@ -1,17 +1,26 @@
-name: "Quark"
-name_zh: "夸克"
+name: Quark
+name_zh: 夸克
 rank: 27
-developer: "广州市动悦信息技术有限公司"
+developer: 广州市动悦信息技术有限公司
 category: utilities
-store_id: "1160172628"
+store_id: '1160172628'
 icon: /icons/quark.jpg
-aliases: ["夸克浏览器"]
+aliases:
+- 夸克浏览器
 build:
-  sdk: unknown
-  evidence: unknown
+  sdk: '26'
+  evidence: observed
+  checked: '2026-10-24'
 features: []
 issues: []
 store:
-  current_version: "10.19.5.3237"
-  current_version_release_date: "2026-10-22"
-  synced_at: "2026-10-24"
+  current_version: 10.19.5.3237
+  current_version_release_date: '2026-10-22'
+  synced_at: '2026-10-24'
+test:
+  confidence: verified
+  version: 10.19.5.3237
+  os: '27.1'
+  date: '2026-10-24'
+  by: '@SonettoGu14'
+  device: iPhone Duo

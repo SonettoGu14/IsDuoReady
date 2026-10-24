@@ -1,17 +1,26 @@
-name: "Meitu"
-name_zh: "美图秀秀"
+name: Meitu
+name_zh: 美图秀秀
 rank: 25
-developer: "Meitu Technology Co., Ltd."
+developer: Meitu Technology Co., Ltd.
 category: creativity
-store_id: "416048305"
+store_id: '416048305'
 icon: /icons/meitu.jpg
-aliases: ["美图"]
+aliases:
+- 美图
 build:
-  sdk: unknown
-  evidence: unknown
+  sdk: '27.1'
+  evidence: observed
+  checked: '2026-10-24'
 features: []
 issues: []
 store:
-  current_version: "12.21.5"
-  current_version_release_date: "2026-10-21"
-  synced_at: "2026-10-24"
+  current_version: 12.21.5
+  current_version_release_date: '2026-10-21'
+  synced_at: '2026-10-24'
+test:
+  confidence: verified
+  version: 12.21.5
+  os: '27.1'
+  date: '2026-10-24'
+  by: '@SonettoGu14'
+  device: iPhone Duo

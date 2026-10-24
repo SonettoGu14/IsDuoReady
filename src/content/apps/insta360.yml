@@ -1,0 +1,27 @@
+name: Insta360
+name_zh: Insta360
+rank: 80
+developer: Insta360
+category: creativity
+store_id: '1491299654'
+icon: /icons/insta360.jpg
+aliases:
+- Insta360
+- 影石
+build:
+  sdk: '26'
+  evidence: observed
+  checked: '2026-10-24'
+test:
+  confidence: verified
+  version: 2.34.7
+  os: '27.1'
+  date: '2026-10-24'
+  by: '@SonettoGu14'
+  device: iPhone Duo
+features: []
+issues: []
+store:
+  current_version: 2.34.7
+  current_version_release_date: '2026-10-19'
+  synced_at: '2026-10-25'

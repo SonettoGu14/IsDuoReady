@@ -1,17 +1,28 @@
-name: "AMap"
-name_zh: "高德地图"
+name: AMap
+name_zh: 高德地图
 rank: 10
-developer: "AutoNavi Information Technology Co. Ltd."
+developer: AutoNavi Information Technology Co. Ltd.
 category: navigation
-store_id: "461703208"
+store_id: '461703208'
 icon: /icons/amap.jpg
-aliases: ["高德", "Gaode"]
+aliases:
+- 高德
+- Gaode
 build:
-  sdk: unknown
-  evidence: unknown
-features: [apple-featured]
+  sdk: '27.1'
+  evidence: observed
+  checked: '2026-10-24'
+features:
+- apple-featured
 issues: []
 store:
-  current_version: "17.2.1"
-  current_version_release_date: "2026-10-23"
-  synced_at: "2026-10-24"
+  current_version: 17.2.1
+  current_version_release_date: '2026-10-23'
+  synced_at: '2026-10-24'
+test:
+  confidence: verified
+  version: 17.2.1
+  os: '27.1'
+  date: '2026-10-24'
+  by: '@SonettoGu14'
+  device: iPhone Duo

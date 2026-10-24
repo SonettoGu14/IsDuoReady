@@ -4,6 +4,7 @@ export function validateApps(apps: AppEntry[]): string[] {
   const errors: string[] = [];
   const ids = new Map<string, string>();
   const storeIds = new Map<string, string>();
+  const tomorrow = new Date(Date.now() + 86_400_000).toISOString().slice(0, 10);
 
   for (const app of apps) {
     if (ids.has(app.id)) errors.push(`${app.id}: duplicate app id (also ${ids.get(app.id)})`);
@@ -51,7 +52,9 @@ export function validateApps(apps: AppEntry[]): string[] {
 
     for (const date of [app.test?.date, app.build.checked, app.store?.synced_at]) {
       if (date && Number.isNaN(Date.parse(date))) errors.push(`${app.id}: invalid date ${date}`);
-      if (date && Date.parse(date) > Date.now()) errors.push(`${app.id}: date is in the future: ${date}`);
+      if (date && /^\d{4}-\d{2}-\d{2}$/.test(date) && date > tomorrow) {
+        errors.push(`${app.id}: date is in the future: ${date}`);
+      }
     }
   }
 

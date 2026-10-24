@@ -1,0 +1,27 @@
+name: NIO
+name_zh: 蔚来
+rank: 65
+developer: NIO Co., Ltd
+category: travel
+store_id: '1116095987'
+icon: /icons/nio.jpg
+aliases:
+- 蔚来
+- NIO
+build:
+  sdk: '26'
+  evidence: observed
+  checked: '2026-10-24'
+test:
+  confidence: verified
+  version: 6.9.0
+  os: '27.1'
+  date: '2026-10-24'
+  by: '@SonettoGu14'
+  device: iPhone Duo
+features: []
+issues: []
+store:
+  current_version: 6.9.0
+  current_version_release_date: '2026-10-08'
+  synced_at: '2026-10-25'

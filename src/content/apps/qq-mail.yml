@@ -1,16 +1,24 @@
-name: "QQ Mail"
-name_zh: "QQ邮箱"
+name: QQ Mail
+name_zh: QQ邮箱
 rank: 29
-developer: "Tencent Technology (Shenzhen) Company Limited"
+developer: Tencent Technology (Shenzhen) Company Limited
 category: productivity
-store_id: "473225145"
+store_id: '473225145'
 icon: /icons/qq-mail.jpg
 build:
-  sdk: unknown
-  evidence: unknown
+  sdk: '26'
+  evidence: observed
+  checked: '2026-10-24'
 features: []
 issues: []
 store:
-  current_version: "7.1.10"
-  current_version_release_date: "2026-09-24"
-  synced_at: "2026-10-24"
+  current_version: 7.1.10
+  current_version_release_date: '2026-09-24'
+  synced_at: '2026-10-24'
+test:
+  confidence: verified
+  version: 7.1.10
+  os: '27.1'
+  date: '2026-10-24'
+  by: '@SonettoGu14'
+  device: iPhone Duo

@@ -1,0 +1,28 @@
+name: McDonald's
+name_zh: 麦当劳
+rank: 67
+developer: McDonald's (China) Co., Ltd.
+category: food
+store_id: '1054598922'
+icon: /icons/mcdonalds.jpg
+aliases:
+- 麦当劳
+- McDonald's
+- 麦乐送
+build:
+  sdk: '26'
+  evidence: observed
+  checked: '2026-10-24'
+test:
+  confidence: verified
+  version: 7.0.44.0
+  os: '27.1'
+  date: '2026-10-24'
+  by: '@SonettoGu14'
+  device: iPhone Duo
+features: []
+issues: []
+store:
+  current_version: 7.0.44.0
+  current_version_release_date: '2026-10-21'
+  synced_at: '2026-10-25'

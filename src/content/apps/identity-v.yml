@@ -1,16 +1,24 @@
-name: "Identity V"
-name_zh: "第五人格"
+name: Identity V
+name_zh: 第五人格
 rank: 56
-developer: "网易移动游戏"
+developer: 网易移动游戏
 category: games
-store_id: "1330863325"
+store_id: '1330863325'
 icon: /icons/identity-v.jpg
 build:
-  sdk: unknown
-  evidence: unknown
+  sdk: '26'
+  evidence: observed
+  checked: '2026-10-24'
 features: []
 issues: []
 store:
-  current_version: "26.243.2117"
-  current_version_release_date: "2026-09-03"
-  synced_at: "2026-10-24"
+  current_version: 26.243.2117
+  current_version_release_date: '2026-09-03'
+  synced_at: '2026-10-24'
+test:
+  confidence: verified
+  version: 26.243.2117
+  os: '27.1'
+  date: '2026-10-24'
+  by: '@SonettoGu14'
+  device: iPhone Duo

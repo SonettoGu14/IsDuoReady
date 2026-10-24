@@ -1,0 +1,27 @@
+name: UU Remote
+name_zh: UU远程
+rank: 93
+developer: Guangzhou NetEase Computer System Co.Ltd
+category: utilities
+store_id: '1642306791'
+icon: /icons/uu-remote.jpg
+aliases:
+- UU远程
+- UU Remote
+build:
+  sdk: '26'
+  evidence: observed
+  checked: 2026-10-24
+test:
+  confidence: verified
+  version: 4.42.0
+  os: '27.1'
+  date: 2026-10-24
+  by: '@SonettoGu14'
+  device: iPhone Duo
+features: []
+issues: []
+store:
+  current_version: 4.42.0
+  current_version_release_date: 2026-09-25
+  synced_at: 2026-10-24

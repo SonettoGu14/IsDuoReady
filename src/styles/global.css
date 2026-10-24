@@ -1078,6 +1078,30 @@ select {
   margin-bottom: 40px;
 }
 
+.tier-definition {
+  padding-top: 14px;
+  border-top: 2px solid var(--tier-color);
+}
+
+.tier-definition-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.tier-definition p {
+  max-width: 50ch;
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.testing-record {
+  margin-top: 0;
+}
+
 .panel-section h2 {
   margin-bottom: 18px;
   font-size: 22px;
@@ -1147,6 +1171,12 @@ select {
   color: var(--muted);
   font-size: 12px;
   white-space: nowrap;
+}
+
+.check-note {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 12px;
 }
 
 .empty-panel {

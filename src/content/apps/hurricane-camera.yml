@@ -1,0 +1,26 @@
+name: Hurricane Camera
+name_zh: 飓风相机
+rank: 89
+developer: Hangzhou Ostar Media Co.,Ltd.
+category: creativity
+store_id: '6749835845'
+icon: /icons/hurricane-camera.jpg
+aliases:
+- 飓风相机
+build:
+  sdk: '27.0'
+  evidence: observed
+  checked: '2026-10-24'
+test:
+  confidence: verified
+  version: 1.8.7
+  os: '27.1'
+  date: '2026-10-24'
+  by: '@SonettoGu14'
+  device: iPhone Duo
+features: []
+issues: []
+store:
+  current_version: 1.8.7
+  current_version_release_date: '2026-10-21'
+  synced_at: '2026-10-25'

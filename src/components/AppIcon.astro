@@ -1,14 +1,16 @@
 ---
+import { getAppName } from '../lib/i18n';
 import { assetPath } from '../lib/url';
-import type { AppEntry } from '../lib/types';
+import type { AppEntry, Locale } from '../lib/types';
 
 interface Props {
   app: AppEntry;
+  lang: Locale;
   size?: 'small' | 'medium' | 'large';
   eager?: boolean;
 }
-const { app, size = 'medium', eager = false } = Astro.props;
-const initials = app.name.replace(/[^A-Za-z0-9\u4e00-\u9fff]/g, '').slice(0, 2).toUpperCase();
+const { app, lang, size = 'medium', eager = false } = Astro.props;
+const initials = getAppName(app, lang).replace(/[^A-Za-z0-9\u4e00-\u9fff]/g, '').slice(0, 2).toUpperCase();
 ---
 
 {

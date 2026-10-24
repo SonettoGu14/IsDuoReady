@@ -59,19 +59,13 @@ test:
   os: "27.1"
   date: "2026-10-23"
   by: "@your-handle"
-  checks:
-    outer_full: pass
-    inner_full: pass
-    vertical_bars: pass
-    fold_safe: pass
-    camera_safe: pass
-    split_view: pass
-    continuity: pass
 features: [split-view]
 issues: []
 ```
 
-Check values are `pass`, `fail`, `na`, or `unknown`. Core checks are `outer_full`, `inner_full`, `vertical_bars`, `fold_safe`, and `camera_safe`.
+The public model is the three Apple tiers. Do not add a separate checklist of pass/fail requirements in a report; explain briefly why the app belongs to that tier.
+
+公开模型只有 Apple 三档。报告里不需要再附一套“通过/不通过”的检查清单，用一句话说明为什么归入该档位即可。
 
 `rank` is optional. It preserves the curated China chart order for the default list; new community entries can omit it and fall back to name order.
 

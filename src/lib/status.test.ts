@@ -82,6 +82,41 @@ describe('getHealth', () => {
     expect(getHealth(entry)).toBe('broken');
   });
 
+  it('does not treat expected compatibility-mode failures as defects', () => {
+    const compatible = app({
+      build: { sdk: '26', evidence: 'observed' },
+      test: {
+        confidence: 'verified',
+        version: '1.0',
+        os: '27.1',
+        date: '2026-10-24',
+        by: '@owner',
+        checks: {
+          outer_full: 'fail',
+          inner_full: 'fail',
+          split_view: 'pass',
+          continuity: 'pass',
+        },
+      },
+    });
+    expect(getHealth(compatible)).toBe('ok');
+  });
+
+  it('does not treat horizontal bars on a 27.0 build as a defect', () => {
+    const resizable = app({
+      build: { sdk: '27.0', evidence: 'observed' },
+      test: {
+        confidence: 'verified',
+        version: '1.0',
+        os: '27.1',
+        date: '2026-10-24',
+        by: '@owner',
+        checks: { vertical_bars: 'fail', inner_full: 'pass' },
+      },
+    });
+    expect(getHealth(resizable)).toBe('ok');
+  });
+
   it('keeps non-core failures as minor issues', () => {
     const entry = app({
       test: {

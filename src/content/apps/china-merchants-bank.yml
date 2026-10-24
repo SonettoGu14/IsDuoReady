@@ -1,17 +1,26 @@
-name: "China Merchants Bank"
-name_zh: "招商银行"
+name: China Merchants Bank
+name_zh: 招商银行
 rank: 36
-developer: "招商银行"
+developer: 招商银行
 category: finance
-store_id: "392899425"
+store_id: '392899425'
 icon: /icons/china-merchants-bank.jpg
-aliases: ["招行"]
+aliases:
+- 招行
 build:
-  sdk: unknown
-  evidence: unknown
+  sdk: '27.1'
+  evidence: observed
+  checked: '2026-10-24'
 features: []
 issues: []
 store:
-  current_version: "14.4.8"
-  current_version_release_date: "2026-10-23"
-  synced_at: "2026-10-24"
+  current_version: 14.4.8
+  current_version_release_date: '2026-10-23'
+  synced_at: '2026-10-24'
+test:
+  confidence: verified
+  version: 14.4.8
+  os: '27.1'
+  date: '2026-10-24'
+  by: '@SonettoGu14'
+  device: iPhone Duo

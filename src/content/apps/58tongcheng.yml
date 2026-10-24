@@ -1,17 +1,26 @@
-name: "58.com"
-name_zh: "58同城"
+name: 58.com
+name_zh: 58同城
 rank: 47
-developer: "北京城市网邻信息技术有限公司"
+developer: 北京城市网邻信息技术有限公司
 category: utilities
-store_id: "480079300"
+store_id: '480079300'
 icon: /icons/58tongcheng.jpg
-aliases: ["58"]
+aliases:
+- '58'
 build:
-  sdk: unknown
-  evidence: unknown
+  sdk: '26'
+  evidence: observed
+  checked: '2026-10-24'
 features: []
 issues: []
 store:
-  current_version: "13.60.1"
-  current_version_release_date: "2026-10-13"
-  synced_at: "2026-10-24"
+  current_version: 13.60.1
+  current_version_release_date: '2026-10-13'
+  synced_at: '2026-10-24'
+test:
+  confidence: verified
+  version: 13.60.1
+  os: '27.1'
+  date: '2026-10-24'
+  by: '@SonettoGu14'
+  device: iPhone Duo

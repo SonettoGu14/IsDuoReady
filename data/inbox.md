@@ -4,17 +4,17 @@ Use this worksheet while testing your installed apps. Paste the completed rows i
 
 测试已安装应用时，可以先记在这里。完成后把表格贴进 issue 或发给维护者，不需要编辑 YAML。
 
-Tier values / 档位：`optimized`（27.1）、`resizable`（27.0）、`compatible`（≤26）、`unknown`。
+Tier values / 档位：`optimized`（已适配，27.1）、`resizable`（能缩放，27.0）、`compatible`（能运行，≤26）、`unknown`（不确定）。
 
-| App | Tier | Outer | Inner | Bars | Half-fold | Split View | Continuity | Version | Notes |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-|  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |  |  |  |
+| App | Tier | Version | Notes |
+| --- | --- | --- | --- |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |
+|  |  |  |  |

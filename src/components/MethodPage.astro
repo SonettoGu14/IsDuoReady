@@ -32,11 +32,9 @@ const copy = {
       ['App Store badge', 'The Made for iPhone Duo badge on a product page.', 'A store signal, not proof of a build tier or a good layout.'],
     ],
     steps: [
-      ['Open the app unfolded', 'A centered window with empty space points to Compatible. A nearly full layout points to Resizable. Edge-to-edge content points to Optimized.'],
-      ['Look at the status-bar edge', 'A remaining strip on that side is the classic iOS 27.0 SDK signature. Full-bleed content plus vertical system bars points to 27.1.'],
-      ['Fold it halfway', 'Buttons, sheets, subtitles, and keyboards should not sit in the folding region. Content should move or split deliberately.'],
-      ['Close it and check the outer display', 'Controls should avoid the camera corner. The app should not leave a large unused band.'],
-      ['Try Split View, then fold and unfold', 'Both apps should resize correctly. Your scroll position, video, call, or draft should survive the transition.'],
+      ['Open it unfolded', 'A centered window with empty space = 能运行 (iOS 26 SDK or earlier). Nearly full width with a status-bar strip = 能缩放 (iOS 27.0). Edge-to-edge with vertical bars = 已适配 (iOS 27.1).'],
+      ['Check the outer display', 'An optimized app should use the full cover display. Older builds can leave unused space. Do not use the App Store badge as evidence.'],
+      ['Stop when it is ambiguous', 'If the layout does not clearly match one tier, record 不确定 / 未评级 instead of guessing.'],
     ],
     evidence: [
       ['Binary', 'DTSDKName or LC_BUILD_VERSION read from an app binary.', 'Strongest build evidence; suitable for spot checks.'],
@@ -69,11 +67,9 @@ const copy = {
       ['App Store 徽章', '产品页上的 Made for iPhone Duo 徽章。', '是商店信号，不能证明构建档位或布局质量。'],
     ],
     steps: [
-      ['展开后打开 app', '居中且四周有空白，通常是可运行；接近全宽，通常是可缩放；顶到边缘，通常是已优化。'],
-      ['看状态栏一侧', '那一侧仍留一条边，是 iOS 27.0 SDK 的典型特征；全宽内容加竖排系统栏，指向 27.1。'],
-      ['半折设备', '按钮、弹窗、字幕和键盘不应落在折叠区域里。内容应当主动移开或分栏。'],
-      ['合上检查外屏', '控件应避开摄像头角落，不应留下整条空白。'],
-      ['试 Split View，再折叠和展开', '两个 app 都应正确缩放；滚动位置、视频、通话或草稿不应丢失。'],
+      ['展开后打开 app', '居中且四周有空白 = 能运行（iOS 26 SDK 或更早）；接近全宽但状态栏一侧留一条 = 能缩放（iOS 27.0）；顶到边缘且系统栏竖排 = 已适配（iOS 27.1）。'],
+      ['看一下外屏', '已适配的 app 应使用完整外屏；旧构建可以留空。不要用 App Store 徽章当证据。'],
+      ['看不准就停', '如果布局不能明确归入某一档，记“不确定 / 未评级”，不要猜。'],
     ],
     evidence: [
       ['二进制', '从 app 二进制读取 DTSDKName 或 LC_BUILD_VERSION。', '最强的构建证据，适合人工抽检。'],

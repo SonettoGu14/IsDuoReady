@@ -1,0 +1,26 @@
+name: Tencent Comics
+name_zh: 腾讯动漫
+rank: 102
+developer: Tencent Technology (Shanghai) Company Limited
+category: reading
+store_id: '569387346'
+icon: /icons/tencent-comics.jpg
+aliases:
+- 腾讯动漫
+build:
+  sdk: '26'
+  evidence: observed
+  checked: '2026-10-24'
+test:
+  confidence: verified
+  version: 13.1.2
+  os: '27.1'
+  date: '2026-10-24'
+  by: '@SonettoGu14'
+  device: iPhone Duo
+features: []
+issues: []
+store:
+  current_version: 13.1.2
+  current_version_release_date: '2026-09-28'
+  synced_at: '2026-10-25'

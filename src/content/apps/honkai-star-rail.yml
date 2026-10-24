@@ -1,17 +1,27 @@
-name: "Honkai: Star Rail"
-name_zh: "崩坏：星穹铁道"
+name: 'Honkai: Star Rail'
+name_zh: 崩坏：星穹铁道
 rank: 59
-developer: "miHoYo Games"
+developer: miHoYo Games
 category: games
-store_id: "1523037824"
+store_id: '1523037824'
 icon: /icons/honkai-star-rail.jpg
-aliases: ["星铁", "星穹铁道"]
+aliases:
+- 星铁
+- 星穹铁道
 build:
-  sdk: unknown
-  evidence: unknown
+  sdk: '26'
+  evidence: observed
+  checked: '2026-10-24'
 features: []
 issues: []
 store:
-  current_version: "4.6.0"
-  current_version_release_date: "2026-09-27"
-  synced_at: "2026-10-24"
+  current_version: 4.6.0
+  current_version_release_date: '2026-09-27'
+  synced_at: '2026-10-24'
+test:
+  confidence: verified
+  version: 4.6.0
+  os: '27.1'
+  date: '2026-10-24'
+  by: '@SonettoGu14'
+  device: iPhone Duo

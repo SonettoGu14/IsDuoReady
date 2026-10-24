@@ -2,7 +2,7 @@
 
 **Which apps actually use the Duo?** A bilingual, community-verified index of iPhone Duo app adaptation.
 
-**哪些 app 真的适配了 Duo？** 中英双语的 iPhone Duo 应用适配索引，以构建 SDK 和实机检查为依据。
+**哪些 app 真的适配了 Duo？** 中英双语的 iPhone Duo 应用适配索引，以构建 SDK 和实机观察为依据。
 
 Live site / 在线站点: **https://sonettogu14.github.io/IsDuoReady/**
 

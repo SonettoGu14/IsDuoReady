@@ -1,17 +1,26 @@
-name: "Game for Peace"
-name_zh: "和平精英"
+name: Game for Peace
+name_zh: 和平精英
 rank: 52
-developer: "Shenzhen Tencent Tianyou Technology Ltd"
+developer: Shenzhen Tencent Tianyou Technology Ltd
 category: games
-store_id: "1321803705"
+store_id: '1321803705'
 icon: /icons/game-for-peace.jpg
-aliases: ["吃鸡"]
+aliases:
+- 吃鸡
 build:
-  sdk: unknown
-  evidence: unknown
+  sdk: '26'
+  evidence: observed
+  checked: '2026-10-24'
 features: []
 issues: []
 store:
-  current_version: "1.38.12"
-  current_version_release_date: "2026-09-01"
-  synced_at: "2026-10-24"
+  current_version: 1.38.12
+  current_version_release_date: '2026-09-01'
+  synced_at: '2026-10-24'
+test:
+  confidence: verified
+  version: 1.38.12
+  os: '27.1'
+  date: '2026-10-24'
+  by: '@SonettoGu14'
+  device: iPhone Duo

@@ -1,4 +1,12 @@
-import { CORE_CHECKS, type AppEntry, type Confidence, type Locale, type Tier } from './types';
+import {
+  CORE_CHECKS,
+  type AppEntry,
+  type CheckKey,
+  type CheckValue,
+  type Confidence,
+  type Locale,
+  type Tier,
+} from './types';
 
 const TIER_ORDER: Record<Tier, number> = {
   optimized: 0,
@@ -50,14 +58,32 @@ export function isSolidEvidence(app: AppEntry): boolean {
   return confidence === 'verified' || confidence === 'community';
 }
 
+const EXPECTED_FAILURES: Record<Tier, CheckKey[]> = {
+  compatible: ['outer_full', 'inner_full', 'vertical_bars'],
+  resizable: ['outer_full', 'vertical_bars'],
+  optimized: [],
+  unrated: [],
+};
+
+export function isExpectedFailure(app: AppEntry, key: CheckKey, value: CheckValue): boolean {
+  return value === 'fail' && EXPECTED_FAILURES[getTier(app)].includes(key);
+}
+
 export function getHealth(app: AppEntry): 'ok' | 'minor' | 'broken' | 'unknown' {
   if (app.issues.some((issue) => issue.severity === 'broken')) return 'broken';
-  const checks = Object.entries(app.test?.checks ?? {});
-  if (checks.some(([key, value]) => CORE_CHECKS.includes(key as never) && value === 'fail')) {
+  const checks = Object.entries(app.test?.checks ?? {}) as [CheckKey, CheckValue][];
+  if (
+    checks.some(
+      ([key, value]) =>
+        CORE_CHECKS.includes(key) && value === 'fail' && !isExpectedFailure(app, key, value),
+    )
+  ) {
     return 'broken';
   }
   if (app.issues.some((issue) => issue.severity === 'minor')) return 'minor';
-  if (checks.some(([, value]) => value === 'fail')) return 'minor';
+  if (checks.some(([key, value]) => value === 'fail' && !isExpectedFailure(app, key, value))) {
+    return 'minor';
+  }
   return app.test ? 'ok' : 'unknown';
 }
 

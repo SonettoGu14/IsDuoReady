@@ -1,0 +1,27 @@
+name: Hongguo Short Drama
+name_zh: 红果短剧
+rank: 95
+developer: Beijing Bimo Liuxiang Technology Co., Ltd.
+category: entertainment
+store_id: '6451407032'
+icon: /icons/hongguo-short-drama.jpg
+aliases:
+- 红果短剧
+- 红果
+build:
+  sdk: '26'
+  evidence: observed
+  checked: '2026-10-24'
+test:
+  confidence: verified
+  version: 7.4.1
+  os: '27.1'
+  date: '2026-10-24'
+  by: '@SonettoGu14'
+  device: iPhone Duo
+features: []
+issues: []
+store:
+  current_version: 7.4.1
+  current_version_release_date: '2026-10-19'
+  synced_at: '2026-10-25'

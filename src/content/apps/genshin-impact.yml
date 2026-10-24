@@ -1,17 +1,26 @@
-name: "Genshin Impact"
-name_zh: "原神"
+name: Genshin Impact
+name_zh: 原神
 rank: 58
-developer: "miHoYo Games"
+developer: miHoYo Games
 category: games
-store_id: "1467190251"
+store_id: '1467190251'
 icon: /icons/genshin-impact.jpg
-aliases: ["原神"]
+aliases:
+- 原神
 build:
-  sdk: unknown
-  evidence: unknown
+  sdk: '26'
+  evidence: observed
+  checked: '2026-10-24'
 features: []
 issues: []
 store:
-  current_version: "7.1.0"
-  current_version_release_date: "2026-09-22"
-  synced_at: "2026-10-24"
+  current_version: 7.1.0
+  current_version_release_date: '2026-09-22'
+  synced_at: '2026-10-24'
+test:
+  confidence: verified
+  version: 7.1.0
+  os: '27.1'
+  date: '2026-10-24'
+  by: '@SonettoGu14'
+  device: iPhone Duo

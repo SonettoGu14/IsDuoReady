@@ -1,17 +1,26 @@
-name: "Pinduoduo"
-name_zh: "拼多多"
+name: Pinduoduo
+name_zh: 拼多多
 rank: 6
-developer: "上海寻梦信息技术有限公司"
+developer: 上海寻梦信息技术有限公司
 category: shopping
-store_id: "1044283059"
+store_id: '1044283059'
 icon: /icons/pinduoduo.jpg
-aliases: ["PDD"]
+aliases:
+- PDD
 build:
-  sdk: unknown
-  evidence: unknown
+  sdk: '26'
+  evidence: observed
+  checked: '2026-10-24'
 features: []
 issues: []
 store:
-  current_version: "8.28.0"
-  current_version_release_date: "2026-10-19"
-  synced_at: "2026-10-24"
+  current_version: 8.28.0
+  current_version_release_date: '2026-10-19'
+  synced_at: '2026-10-24'
+test:
+  confidence: verified
+  version: 8.28.0
+  os: '27.1'
+  date: '2026-10-24'
+  by: '@SonettoGu14'
+  device: iPhone Duo

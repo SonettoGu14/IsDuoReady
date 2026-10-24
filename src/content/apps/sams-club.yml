@@ -1,17 +1,27 @@
-name: "Sam's Club"
-name_zh: "山姆会员商店"
+name: Sam's Club
+name_zh: 山姆会员商店
 rank: 46
-developer: "沃尔玛(中国)投资有限公司"
+developer: 沃尔玛(中国)投资有限公司
 category: shopping
-store_id: "818237113"
+store_id: '818237113'
 icon: /icons/sams-club.jpg
-aliases: ["山姆", "Sam's Club"]
+aliases:
+- 山姆
+- Sam's Club
 build:
-  sdk: unknown
-  evidence: unknown
+  sdk: '26'
+  evidence: observed
+  checked: '2026-10-24'
 features: []
 issues: []
 store:
-  current_version: "5.0.154"
-  current_version_release_date: "2026-10-16"
-  synced_at: "2026-10-24"
+  current_version: 5.0.154
+  current_version_release_date: '2026-10-16'
+  synced_at: '2026-10-24'
+test:
+  confidence: verified
+  version: 5.0.154
+  os: '27.1'
+  date: '2026-10-24'
+  by: '@SonettoGu14'
+  device: iPhone Duo

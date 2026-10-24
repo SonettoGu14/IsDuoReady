@@ -38,7 +38,7 @@ const search = [app.name, app.name_zh, app.developer, ...(app.aliases ?? [])]
 >
   <a class="app-row-link" href={appPath(lang, app.id)}>
     <span class="app-cell app-cell-app">
-      <AppIcon app={app} size="small" eager={eager} />
+      <AppIcon app={app} lang={lang} size="small" eager={eager} />
       <span class="app-identity">
         <strong>{displayName}</strong>
         <span>{app.developer} · {t(lang, `category.${app.category}`)}</span>

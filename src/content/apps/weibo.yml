@@ -1,17 +1,27 @@
-name: "Weibo"
-name_zh: "微博"
+name: Weibo
+name_zh: 微博
 rank: 14
-developer: "SINA Corporation"
+developer: SINA Corporation
 category: social
-store_id: "350962117"
+store_id: '350962117'
 icon: /icons/weibo.jpg
-aliases: ["新浪微博"]
+aliases:
+- 新浪微博
 build:
-  sdk: unknown
-  evidence: unknown
-features: [apple-featured]
+  sdk: '27.1'
+  evidence: observed
+  checked: '2026-10-24'
+features:
+- apple-featured
 issues: []
 store:
-  current_version: "16.10.2"
-  current_version_release_date: "2026-10-21"
-  synced_at: "2026-10-24"
+  current_version: 16.10.2
+  current_version_release_date: '2026-10-21'
+  synced_at: '2026-10-24'
+test:
+  confidence: verified
+  version: 16.10.2
+  os: '27.1'
+  date: '2026-10-24'
+  by: '@SonettoGu14'
+  device: iPhone Duo

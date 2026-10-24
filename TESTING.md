@@ -1,4 +1,4 @@
-# The 30-second Duo check / 30 秒 Duo 实机检查
+# The 30-second Duo tier check / 30 秒判断三档
 
 Test on iPhone Duo, not only in a desktop browser or App Store preview. Record the app version and iOS version.
 
@@ -6,45 +6,32 @@ Test on iPhone Duo, not only in a desktop browser or App Store preview. Record t
 
 ## 1. Open the app unfolded / 展开后打开
 
-- **Centered window with empty space** → likely **Compatible / 可运行** (iOS 26 SDK or earlier).
-- **Nearly full width, but a strip remains along the status-bar edge** → likely **Resizable / 可缩放** (iOS 27.0 SDK).
-- **Edge-to-edge, with toolbars or tab bars vertical below the status bar** → likely **Optimized / 已优化** (iOS 27.1 SDK or later).
+- **Centered window with empty space** → **能运行 / Compatible** (iOS 26 SDK or earlier).
+- **Nearly full width, but a strip remains along the status-bar edge** → **能缩放 / Resizable** (iOS 27.0 SDK).
+- **Edge-to-edge, with toolbars or tab bars vertical below the status bar** → **已适配 / Optimized** (iOS 27.1 SDK or later).
 
 These are visual inferences, not binary proof. Custom bars may not become vertical, and inspectors or split-view sidebars can legitimately stay horizontal.
 
 这些是视觉推断，不是二进制证明。自定义栏可能不会竖排，inspector 或分栏侧边栏也可能合理地保持横向。
 
-## 2. Fold it halfway / 半折
+## 2. Close it / 合上检查外屏
 
-Check that buttons, sheets, subtitles, and the keyboard are not cut by the folding region. Content should move or split deliberately.
+An optimized app should use the full cover display. Compatible and Resizable apps can leave unused space. Do not use the App Store badge as evidence.
 
-检查按钮、弹窗、字幕和键盘是否被折叠区域切断。内容应主动移开或分栏。
+已适配的 app 应使用完整外屏；能运行和能缩放可以留空。不要用 App Store 徽章当证据。
 
-## 3. Close it / 合上检查外屏
+## 3. Stop when it is ambiguous / 看不准就停
 
-Controls should avoid the camera corner. The app should not leave a large unused band.
+If the layout does not clearly match one tier, record **不确定 / 未评级**. Do not guess.
 
-控件应避开摄像头角落，不应留下整条空白。
-
-## 4. Try Split View and continuity / 检查分屏与连续性
-
-Open a second app beside it, then fold and unfold. Both apps should resize correctly. Your scroll position, video, call, or draft should survive.
-
-并排打开第二个 app，再折叠和展开。两者都应正确缩放，滚动位置、视频、通话或草稿不应丢失。
-
-## 5. Media and camera, if applicable / 媒体与相机（如适用）
-
-Faces, subtitles, and key content should not be cropped. Camera direction and previews should remain correct across displays.
-
-人脸、字幕和关键内容不应被裁切；跨屏时摄像头方向和预览应保持正确。
+如果布局不能明确归入某一档，记 **不确定 / 未评级**，不要猜。
 
 ## What to submit / 需要提交
 
 - App name and App Store link / 应用名称与商店链接
 - Tested app version and iOS version / 测试应用版本与系统版本
 - Observed tier / 观察到的档位
-- Pass/fail results for the checks / 各项通过情况
+- One line explaining why / 一句话说明判断依据
 - Outer, inner, and half-folded screenshots / 外屏、内屏和半折截图
-- Reproduction steps for any failure / 失败项的复现步骤
 
 Use the site's Contribute page or `data/inbox.md` while testing.

@@ -1,17 +1,28 @@
-name: "WeChat"
-name_zh: "微信"
+name: WeChat
+name_zh: 微信
 rank: 1
-developer: "WeChat"
+developer: WeChat
 category: social
-store_id: "414478124"
+store_id: '414478124'
 icon: /icons/wechat.jpg
-aliases: ["微信", "Weixin", "WX"]
+aliases:
+- 微信
+- Weixin
+- WX
 build:
-  sdk: unknown
-  evidence: unknown
+  sdk: '27.0'
+  evidence: observed
+  checked: '2026-10-24'
 features: []
 issues: []
 store:
-  current_version: "8.0.80"
-  current_version_release_date: "2026-10-23"
-  synced_at: "2026-10-24"
+  current_version: 8.0.80
+  current_version_release_date: '2026-10-23'
+  synced_at: '2026-10-24'
+test:
+  confidence: verified
+  version: 8.0.80
+  os: '27.1'
+  date: '2026-10-24'
+  by: '@SonettoGu14'
+  device: iPhone Duo

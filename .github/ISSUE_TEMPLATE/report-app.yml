@@ -41,23 +41,11 @@ body:
         - Not sure / 不确定
     validations:
       required: true
-  - type: checkboxes
-    id: checks
-    attributes:
-      label: Checks that passed / 通过的检查
-      options:
-        - label: Outer display uses full width / 外屏全宽
-        - label: Inner display is edge-to-edge / 内屏全宽
-        - label: Vertical bars remain readable / 竖排栏可读
-        - label: Content avoids the fold / 内容避开折痕
-        - label: Controls avoid the camera region / 控件避开摄像头区域
-        - label: Split View resizes correctly / Split View 正确缩放
-        - label: State survives fold and unfold / 折叠展开后状态保留
   - type: textarea
-    id: failures
+    id: reasoning
     attributes:
-      label: Failures and reproduction steps / 失败项与复现步骤
-      description: Name the screen, pose, and what went wrong. / 写明界面、设备形态和问题。
+      label: Why this tier? / 为什么是这个档位？
+      description: Describe the visible layout difference, not a store badge. / 请描述看到的布局差异，不要只引用商店徽章。
   - type: textarea
     id: evidence
     attributes:

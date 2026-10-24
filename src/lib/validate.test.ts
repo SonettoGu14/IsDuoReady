@@ -58,6 +58,21 @@ describe('validateApps', () => {
     expect(errors.join('\n')).toContain('observed build evidence requires a device test');
   });
 
+  it('rejects a test date far in the future', () => {
+    const errors = validateApps([
+      app({
+        test: {
+          confidence: 'verified',
+          version: '1.0',
+          os: '27.1',
+          date: '2099-01-01',
+          by: '@owner',
+        },
+      }),
+    ]);
+    expect(errors.join('\n')).toContain('date is in the future');
+  });
+
   it('rejects unknown feature tags', () => {
     const errors = validateApps([app({ features: ['totally-made-up' as never] })]);
     expect(errors.join('\n')).toContain('unknown feature');

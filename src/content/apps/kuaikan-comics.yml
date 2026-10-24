@@ -1,0 +1,21 @@
+name: Kuaikan Comics
+name_zh: 快看漫画
+rank: 100
+developer: 快看世界（北京）科技有限公司
+category: reading
+aliases:
+- 快看漫画
+- 快看
+build:
+  sdk: '26'
+  evidence: observed
+  checked: '2026-10-24'
+test:
+  confidence: verified
+  version: 未知
+  os: '27.1'
+  date: '2026-10-24'
+  by: '@SonettoGu14'
+  device: iPhone Duo
+features: []
+issues: []

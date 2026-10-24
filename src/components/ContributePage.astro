@@ -1,33 +1,32 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { t } from '../lib/i18n';
-import { CHECKS, type Locale } from '../lib/types';
+import type { Locale } from '../lib/types';
 
 interface Props {
   lang: Locale;
 }
 const { lang } = Astro.props;
-const formChecks = CHECKS.filter((key) => !['media', 'camera', 'camera_safe'].includes(key));
 const copy = {
   en: {
     stepsTitle: 'What happens next',
     steps: [
       'You submit the observed tier, app version, and screenshots.',
-      'A maintainer checks the evidence. Broken status needs a maintainer test or two independent reports.',
+      'A maintainer checks the evidence and records the tier.',
       'The app YAML changes through a reviewed pull request, then GitHub Pages redeploys.',
     ],
     unknown: 'Not sure',
-    reportPlaceholder: 'Anything reproducible: the screen, pose, and what went wrong.',
+    reportPlaceholder: 'Why does this app belong to that tier? Note the screen, pose, and any visible issue.',
   },
   zh: {
     stepsTitle: '接下来会发生什么',
     steps: [
       '你提交观察到的档位、应用版本和截图。',
-      '维护者核对证据。红色问题状态需要维护者实测或两份独立报告。',
+      '维护者核对证据并记录档位。',
       '应用 YAML 经过 PR 审核后合并，GitHub Pages 自动重新部署。',
     ],
     unknown: '不确定',
-    reportPlaceholder: '写下可复现的信息：哪个界面、什么形态、出了什么问题。',
+    reportPlaceholder: '为什么判断为该档位？请写清界面、设备形态和看到的布局差异。',
   },
 } as const;
 const c = copy[lang];
@@ -68,21 +67,6 @@ const c = copy[lang];
           <option value="compatible">{t(lang, 'tier.compatible')} · ≤26 SDK</option>
         </select>
       </div>
-
-      <fieldset class="form-checks">
-        <legend>{t(lang, 'contribute.form.checks')}</legend>
-        {formChecks.map((key) => (
-          <label class="form-check-row">
-            <span>{t(lang, `check.${key}`)}</span>
-            <select data-check={key}>
-              <option value="unknown">{t(lang, 'check.unknown')}</option>
-              <option value="pass">{t(lang, 'check.pass')}</option>
-              <option value="fail">{t(lang, 'check.fail')}</option>
-              <option value="na">{t(lang, 'check.na')}</option>
-            </select>
-          </label>
-        ))}
-      </fieldset>
 
       <div class="form-field">
         <label for="report-notes">{t(lang, 'contribute.form.notes')}</label>
@@ -125,12 +109,12 @@ const c = copy[lang];
         `iOS: ${field('report-os') || '—'}`,
         `Observed tier: ${field('report-tier')}`,
         '',
-        '## Device checks / 实机检查',
+        '## Notes / 备注',
+        field('report-notes') || '—',
+        '',
+        '## Screenshots / 截图',
+        'Please attach outer, inner, and half-folded screenshots. 请附外屏、内屏和半折截图。',
       ];
-      document.querySelectorAll<HTMLSelectElement>('[data-check]').forEach((select) => {
-        lines.push(`- ${select.dataset.check}: ${select.value}`);
-      });
-      lines.push('', '## Notes / 备注', field('report-notes') || '—', '', '## Screenshots / 截图', 'Please attach outer, inner, and half-folded screenshots. 请附外屏、内屏和半折截图。');
       return lines.join('\n');
     }
 

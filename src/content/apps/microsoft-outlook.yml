@@ -1,0 +1,28 @@
+name: Microsoft Outlook
+name_zh: Microsoft Outlook
+rank: 64
+developer: Microsoft Corporation
+category: productivity
+store_id: '951937596'
+icon: /icons/microsoft-outlook.jpg
+aliases:
+- outlook
+- Outlook
+- 微软邮箱
+build:
+  sdk: '27.1'
+  evidence: observed
+  checked: '2026-10-24'
+test:
+  confidence: verified
+  version: 5.2641.0
+  os: '27.1'
+  date: '2026-10-24'
+  by: '@SonettoGu14'
+  device: iPhone Duo
+features: []
+issues: []
+store:
+  current_version: 5.2641.0
+  current_version_release_date: '2026-10-19'
+  synced_at: '2026-10-25'

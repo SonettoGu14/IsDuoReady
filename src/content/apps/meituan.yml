@@ -1,17 +1,26 @@
-name: "Meituan"
-name_zh: "美团"
+name: Meituan
+name_zh: 美团
 rank: 8
-developer: "美团"
+developer: 美团
 category: food
-store_id: "423084029"
+store_id: '423084029'
 icon: /icons/meituan.jpg
-aliases: ["美团外卖"]
+aliases:
+- 美团外卖
 build:
-  sdk: unknown
-  evidence: unknown
+  sdk: '26'
+  evidence: observed
+  checked: '2026-10-24'
 features: []
 issues: []
 store:
-  current_version: "12.67.403"
-  current_version_release_date: "2026-10-22"
-  synced_at: "2026-10-24"
+  current_version: 12.67.403
+  current_version_release_date: '2026-10-22'
+  synced_at: '2026-10-24'
+test:
+  confidence: verified
+  version: 12.67.403
+  os: '27.1'
+  date: '2026-10-24'
+  by: '@SonettoGu14'
+  device: iPhone Duo

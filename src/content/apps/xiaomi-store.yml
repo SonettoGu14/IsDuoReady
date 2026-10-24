@@ -1,0 +1,27 @@
+name: Xiaomi Store
+name_zh: 小米商城
+rank: 87
+developer: Beijing Xiaomi Co., Ltd
+category: shopping
+store_id: '1024958046'
+icon: /icons/xiaomi-store.jpg
+aliases:
+- 小米商城
+- Xiaomi
+build:
+  sdk: '26'
+  evidence: observed
+  checked: '2026-10-24'
+test:
+  confidence: verified
+  version: 5.2.272
+  os: '27.1'
+  date: '2026-10-24'
+  by: '@SonettoGu14'
+  device: iPhone Duo
+features: []
+issues: []
+store:
+  current_version: 5.2.272
+  current_version_release_date: '2026-08-19'
+  synced_at: '2026-10-25'

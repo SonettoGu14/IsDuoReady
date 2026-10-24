@@ -1,0 +1,27 @@
+name: KFC
+name_zh: 肯德基
+rank: 69
+developer: 肯鼎行信息科技(上海)有限公司
+category: food
+store_id: '587238847'
+icon: /icons/kfc.jpg
+aliases:
+- 肯德基
+- KFC
+build:
+  sdk: '26'
+  evidence: observed
+  checked: '2026-10-24'
+test:
+  confidence: verified
+  version: 6.37.1
+  os: '27.1'
+  date: '2026-10-24'
+  by: '@SonettoGu14'
+  device: iPhone Duo
+features: []
+issues: []
+store:
+  current_version: 6.37.1
+  current_version_release_date: '2026-09-14'
+  synced_at: '2026-10-25'
