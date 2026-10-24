@@ -76,7 +76,7 @@ GitHub Actions builds and deploys to GitHub Pages on every push to `main`.
 
 For a custom domain, add `public/CNAME`, set `BASE_PATH=/`, and update `SITE_URL`.
 
-A nightly workflow opens a pull request when App Store versions change. It never changes an app's tier automatically.
+A nightly workflow opens a pull request when App Store versions change. It never changes an app's tier automatically. On a fork, enable **Settings → Actions → General → Allow GitHub Actions to create and approve pull requests** for this workflow.
 
 ## License / 许可
 
