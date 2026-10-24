@@ -1,0 +1,17 @@
+name: "Railway 12306"
+name_zh: "铁路12306"
+rank: 11
+developer: "中国铁道科学研究院集团有限公司"
+category: travel
+store_id: "564818797"
+icon: /icons/railway-12306.jpg
+aliases: ["12306", "中国铁路"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "5.9.6"
+  current_version_release_date: "2026-06-26"
+  synced_at: "2026-10-24"

@@ -1,0 +1,17 @@
+name: "Alipay"
+name_zh: "支付宝"
+rank: 4
+developer: "Alipay (Hangzhou) Technology Co., Ltd."
+category: finance
+store_id: "333206289"
+icon: /icons/alipay.jpg
+aliases: ["支付宝"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "12.12.38"
+  current_version_release_date: "2026-10-21"
+  synced_at: "2026-10-24"

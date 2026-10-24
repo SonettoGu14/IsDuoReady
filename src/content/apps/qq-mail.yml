@@ -1,0 +1,16 @@
+name: "QQ Mail"
+name_zh: "QQ邮箱"
+rank: 29
+developer: "Tencent Technology (Shenzhen) Company Limited"
+category: productivity
+store_id: "473225145"
+icon: /icons/qq-mail.jpg
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "7.1.10"
+  current_version_release_date: "2026-09-24"
+  synced_at: "2026-10-24"

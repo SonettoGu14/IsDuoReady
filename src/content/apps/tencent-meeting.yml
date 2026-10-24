@@ -1,0 +1,17 @@
+name: "Tencent Meeting"
+name_zh: "腾讯会议"
+rank: 33
+developer: "Tencent Technology (Shanghai) Company Limited"
+category: productivity
+store_id: "1484048379"
+icon: /icons/tencent-meeting.jpg
+aliases: ["腾讯会议"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "3.47.0"
+  current_version_release_date: "2026-10-18"
+  synced_at: "2026-10-24"

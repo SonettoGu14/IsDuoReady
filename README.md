@@ -6,6 +6,9 @@
 
 Live site / 在线站点: **https://sonettogu14.github.io/IsDuoReady/**
 
+Chinese is the default locale at `/`. English lives at `/en/`.
+中文为默认语言，根路径即中文；英文位于 `/en/`。
+
 ## The model / 判定模型
 
 The site follows Apple's three build tiers. `Unrated` and `Known issues` are states, not extra tiers.
@@ -44,19 +47,22 @@ npm run sync        # refresh App Store versions and missing icons
 One YAML file per app in `src/content/apps/`:
 
 ```yaml
-name: "Fantastical"
-developer: "Flexibits Inc."
-category: productivity
-store_id: "718043190"
-icon: /icons/fantastical.jpg
+name: "AMap"
+name_zh: "高德地图"
+developer: "AutoNavi Information Technology Co. Ltd."
+category: navigation
+store_id: "461703208"
+icon: /icons/amap.jpg
 build:
   sdk: unknown
   evidence: unknown
-features: [apple-featured]
+features: []
 issues: []
 ```
 
-Do not infer a build tier from an App Store badge or a marketing sentence alone. See [CONTRIBUTING.md](CONTRIBUTING.md) and [TESTING.md](TESTING.md).
+Chinese pages display `name_zh` when present; English pages display `name`. Search indexes both, plus aliases.
+
+The seed selection follows Apple's China top-free chart and top-grossing games, keeping apps that are available in the China storefront. Do not infer a build tier from an App Store badge or a marketing sentence alone. See [CONTRIBUTING.md](CONTRIBUTING.md) and [TESTING.md](TESTING.md).
 
 ## Contribute / 参与
 
@@ -83,3 +89,5 @@ A nightly workflow opens a pull request when App Store versions change. It never
 Code: [MIT](LICENSE). Data: [CC BY 4.0](LICENSE-DATA).
 
 Independent community project. Not affiliated with Apple Inc. iPhone, iPhone Duo, and App Store are trademarks of Apple Inc. App icons and names belong to their respective owners.
+
+The three device images in `public/specimens/` are from Apple Developer's iPhone Duo preparation guide and are used for explanatory purposes. They are not covered by the repository's MIT or CC BY 4.0 licenses.

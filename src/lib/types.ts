@@ -15,6 +15,7 @@ export const CATEGORIES = [
   'games',
   'food',
   'shopping',
+  'finance',
   'travel',
   'music',
   'reading',
@@ -105,6 +106,7 @@ export interface AppEntry {
   developer: string;
   developer_zh?: string;
   category: Category;
+  rank?: number;
   store_id?: string;
   icon?: string;
   aliases?: string[];

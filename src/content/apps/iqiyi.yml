@@ -1,19 +1,17 @@
-name: iQIYI
-name_zh: 爱奇艺
-developer: Beijing Qiyi Century Science & Technology Co.,LTD.
+name: "iQIYI"
+name_zh: "爱奇艺"
+rank: 16
+developer: "Beijing Qiyi Century Science & Technology Co.,LTD."
 category: entertainment
 store_id: "393765873"
 icon: /icons/iqiyi.jpg
-aliases:
-  - iQIYI
-  - 爱奇艺
+aliases: ["爱奇艺视频"]
 build:
   sdk: unknown
   evidence: unknown
-features:
-  - apple-featured
+features: []
 issues: []
 store:
-  current_version: 17.10.3
-  current_version_release_date: 2026-10-23
-  synced_at: 2026-10-24
+  current_version: "17.10.3"
+  current_version_release_date: "2026-10-23"
+  synced_at: "2026-10-24"

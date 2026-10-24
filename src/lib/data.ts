@@ -1,12 +1,12 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { compareApps } from './status';
-import type { AppEntry } from './types';
+import type { AppEntry, Locale } from './types';
 
-export async function getApps(): Promise<AppEntry[]> {
+export async function getApps(locale: Locale = 'zh'): Promise<AppEntry[]> {
   const entries = await getCollection('apps');
   return entries
     .map((entry: CollectionEntry<'apps'>) => ({ ...entry.data, id: entry.id }) as AppEntry)
-    .sort(compareApps);
+    .sort((a: AppEntry, b: AppEntry) => compareApps(a, b, locale));
 }
 
 export function getLatestUpdate(apps: AppEntry[]): string {

@@ -1,0 +1,17 @@
+name: "Baidu Netdisk"
+name_zh: "百度网盘"
+rank: 28
+developer: "Beijing Duyou Science and Technology Co.,Ltd."
+category: productivity
+store_id: "547166701"
+icon: /icons/baidu-netdisk.jpg
+aliases: ["百度云"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "13.36.0"
+  current_version_release_date: "2026-10-22"
+  synced_at: "2026-10-24"

@@ -1,0 +1,16 @@
+name: "QQ Music"
+name_zh: "QQ音乐"
+rank: 21
+developer: "Tencent Technology (Shenzhen) Company Limited"
+category: music
+store_id: "414603431"
+icon: /icons/qq-music.jpg
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "20.9.6"
+  current_version_release_date: "2026-10-22"
+  synced_at: "2026-10-24"

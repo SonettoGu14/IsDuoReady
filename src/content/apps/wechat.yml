@@ -1,0 +1,17 @@
+name: "WeChat"
+name_zh: "微信"
+rank: 1
+developer: "WeChat"
+category: social
+store_id: "414478124"
+icon: /icons/wechat.jpg
+aliases: ["微信", "Weixin", "WX"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "8.0.80"
+  current_version_release_date: "2026-10-23"
+  synced_at: "2026-10-24"

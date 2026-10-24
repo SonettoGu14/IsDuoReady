@@ -1,18 +1,17 @@
-name: Zenless Zone Zero
-developer: COGNOSPHERE PTE. LTD.
+name: "Zenless Zone Zero"
+name_zh: "绝区零"
+rank: 60
+developer: "miHoYo Games"
 category: games
-store_id: "1606356401"
+store_id: "1606359076"
 icon: /icons/zenless-zone-zero.jpg
-aliases:
-  - ZZZ
-  - 绝区零
+aliases: ["ZZZ"]
 build:
   sdk: unknown
   evidence: unknown
-features:
-  - apple-featured
+features: [apple-featured]
 issues: []
 store:
-  current_version: 3.3.0
-  current_version_release_date: 2026-10-20
-  synced_at: 2026-10-24
+  current_version: "3.3.0"
+  current_version_release_date: "2026-10-20"
+  synced_at: "2026-10-24"

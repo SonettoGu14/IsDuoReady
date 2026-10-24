@@ -3,7 +3,7 @@ import AppIcon from './AppIcon.astro';
 import TierMark from './TierMark.astro';
 import SdkChip from './SdkChip.astro';
 import EvidenceLabel from './EvidenceLabel.astro';
-import { t } from '../lib/i18n';
+import { getAppName, t } from '../lib/i18n';
 import { getConfidence, getHealth, getTier } from '../lib/status';
 import { appPath } from '../lib/url';
 import type { AppEntry, Locale } from '../lib/types';
@@ -17,6 +17,7 @@ const { app, lang, eager = false } = Astro.props;
 const tier = getTier(app);
 const health = getHealth(app);
 const confidence = getConfidence(app);
+const displayName = getAppName(app, lang);
 const checkedDate = app.test?.date ?? app.build.checked ?? '';
 const search = [app.name, app.name_zh, app.developer, ...(app.aliases ?? [])]
   .filter(Boolean)
@@ -32,14 +33,14 @@ const search = [app.name, app.name_zh, app.developer, ...(app.aliases ?? [])]
   data-confidence={confidence}
   data-health={health}
   data-date={checkedDate}
-  data-name={app.name.toLocaleLowerCase()}
+  data-name={displayName.toLocaleLowerCase()}
   data-search={search}
 >
   <a class="app-row-link" href={appPath(lang, app.id)}>
     <span class="app-cell app-cell-app">
       <AppIcon app={app} size="small" eager={eager} />
       <span class="app-identity">
-        <strong>{app.name}</strong>
+        <strong>{displayName}</strong>
         <span>{app.developer} · {t(lang, `category.${app.category}`)}</span>
       </span>
     </span>

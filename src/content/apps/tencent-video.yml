@@ -1,0 +1,17 @@
+name: "Tencent Video"
+name_zh: "腾讯视频"
+rank: 17
+developer: "Tencent Technology (Shenzhen) Company Limited"
+category: entertainment
+store_id: "458318329"
+icon: /icons/tencent-video.jpg
+aliases: ["腾讯视频"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "9.04.66"
+  current_version_release_date: "2026-10-22"
+  synced_at: "2026-10-24"

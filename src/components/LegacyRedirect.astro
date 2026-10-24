@@ -1,0 +1,24 @@
+---
+interface Props {
+  to: string;
+}
+const { to } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <meta http-equiv="refresh" content={`0; url=${to}`} />
+    <link rel="canonical" href={to} />
+    <title>跳转中… — IsDuoReady</title>
+  </head>
+  <body>
+    <p><a href={to}>继续前往 IsDuoReady</a></p>
+    <script is:inline define:vars={{ to }}>
+      location.replace(to + location.search + location.hash);
+    </script>
+  </body>
+</html>

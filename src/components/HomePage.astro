@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Specimen from './Specimen.astro';
+import HeroSpecimen from './HeroSpecimen.astro';
 import AppRow from './AppRow.astro';
 import { getLatestUpdate } from '../lib/data';
 import { toJsonScript } from '../lib/json';
@@ -63,18 +63,7 @@ const title = `${t(lang, 'site.title')} — IsDuoReady`;
         }
       </div>
     </div>
-    <div class="hero-specimens">
-      <div class="pose-toggle" role="group" aria-label={t(lang, 'home.specimen_caption')}>
-        <button type="button" data-pose-value="closed" aria-pressed="false">{t(lang, 'home.pose.closed')}</button>
-        <button type="button" data-pose-value="open" aria-pressed="true" class="is-active">{t(lang, 'home.pose.open')}</button>
-      </div>
-      <div class="specimens" id="specimens" data-pose="open">
-        <Specimen tier="compatible" lang={lang} />
-        <Specimen tier="resizable" lang={lang} />
-        <Specimen tier="optimized" lang={lang} />
-      </div>
-      <p class="specimen-caption">{t(lang, 'home.specimen_caption')}</p>
-    </div>
+    <HeroSpecimen lang={lang} />
   </section>
 
   <section class="index-section shell" id="apps">
@@ -235,19 +224,6 @@ const title = `${t(lang, 'site.title')} — IsDuoReady`;
         event.preventDefault();
         searchInput.focus();
       }
-    });
-
-    const specimens = document.querySelector<HTMLDivElement>('#specimens')!;
-    document.querySelectorAll<HTMLButtonElement>('[data-pose-value]').forEach((button) => {
-      button.addEventListener('click', () => {
-        const pose = button.dataset.poseValue!;
-        specimens.dataset.pose = pose;
-        document.querySelectorAll('[data-pose-value]').forEach((item) => {
-          const active = item === button;
-          item.classList.toggle('is-active', active);
-          item.setAttribute('aria-pressed', String(active));
-        });
-      });
     });
 
     const params = new URLSearchParams(window.location.search);

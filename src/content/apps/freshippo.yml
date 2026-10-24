@@ -1,0 +1,17 @@
+name: "Freshippo"
+name_zh: "盒马"
+rank: 45
+developer: "Shanghai Heli Network Technical Service Co., Ltd."
+category: food
+store_id: "1063183999"
+icon: /icons/freshippo.jpg
+aliases: ["盒马鲜生"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "8.11.0"
+  current_version_release_date: "2026-10-19"
+  synced_at: "2026-10-24"

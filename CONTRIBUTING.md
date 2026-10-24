@@ -43,6 +43,7 @@ Direct YAML pull requests are welcome. Use one file per app in `src/content/apps
 
 ```yaml
 name: "Example"
+name_zh: "示例应用"
 developer: "Example Inc."
 category: productivity
 store_id: "123456789"
@@ -71,6 +72,8 @@ issues: []
 ```
 
 Check values are `pass`, `fail`, `na`, or `unknown`. Core checks are `outer_full`, `inner_full`, `vertical_bars`, `fold_safe`, and `camera_safe`.
+
+`rank` is optional. It preserves the curated China chart order for the default list; new community entries can omit it and fall back to name order.
 
 ## Developer corrections / 开发者纠错
 

@@ -22,7 +22,7 @@ async function exists(url: URL): Promise<boolean> {
 }
 
 async function lookup(storeId: string): Promise<StoreResult | null> {
-  for (const country of ['us', 'cn', 'kr']) {
+  for (const country of ['cn', 'us']) {
     const url = new URL('https://itunes.apple.com/lookup');
     url.searchParams.set('id', storeId);
     url.searchParams.set('country', country);

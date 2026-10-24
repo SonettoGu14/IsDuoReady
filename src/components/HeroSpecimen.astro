@@ -1,0 +1,126 @@
+---
+import { t } from '../lib/i18n';
+import { assetPath } from '../lib/url';
+import type { Locale, Tier } from '../lib/types';
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const items: {
+  key: Exclude<Tier, 'unrated'>;
+  src: string;
+  sdk: string;
+  alt: string;
+}[] = [
+  {
+    key: 'compatible',
+    src: '/specimens/compatible-ios26.jpg',
+    sdk: '≤26 SDK',
+    alt: t(lang, 'home.specimen.compatible.alt'),
+  },
+  {
+    key: 'resizable',
+    src: '/specimens/resizable-ios27.jpg',
+    sdk: '27.0 SDK',
+    alt: t(lang, 'home.specimen.resizable.alt'),
+  },
+  {
+    key: 'optimized',
+    src: '/specimens/optimized-ios271.jpg',
+    sdk: '27.1 SDK',
+    alt: t(lang, 'home.specimen.optimized.alt'),
+  },
+];
+---
+
+<div class="hero-specimens" data-hero-specimen>
+  <div class="hero-specimen-tabs" role="tablist" aria-label={t(lang, 'home.specimen_caption')}>
+    {
+      items.map((item, index) => (
+        <button
+          type="button"
+          role="tab"
+          id={`specimen-tab-${item.key}`}
+          aria-controls={`specimen-panel-${item.key}`}
+          aria-selected={index === 0 ? 'true' : 'false'}
+          tabindex={index === 0 ? 0 : -1}
+          data-specimen-tab={item.key}
+        >
+          {t(lang, `tier.${item.key}`)}
+        </button>
+      ))
+    }
+  </div>
+
+  <div class="hero-specimen-stage">
+    {
+      items.map((item, index) => (
+        <div
+          class={`hero-specimen-panel tier-${item.key}`}
+          id={`specimen-panel-${item.key}`}
+          role="tabpanel"
+          aria-labelledby={`specimen-tab-${item.key}`}
+          hidden={index !== 0}
+          data-specimen-panel={item.key}
+        >
+          <a href={assetPath(item.src)} target="_blank" rel="noreferrer">
+            <img
+              src={assetPath(item.src)}
+              width="1300"
+              height="722"
+              alt={item.alt}
+              loading={index === 0 ? 'eager' : 'lazy'}
+              decoding="async"
+            />
+          </a>
+          <p class="hero-specimen-meta">
+            <span class={`tier-mark tier-${item.key}`}>
+              <span class="tier-dot" aria-hidden="true"></span>
+              <span>{t(lang, `tier.${item.key}`)}</span>
+            </span>
+            <span class="specimen-sdk">{item.sdk}</span>
+          </p>
+        </div>
+      ))
+    }
+  </div>
+
+  <p class="hero-specimen-source">
+    {t(lang, 'home.specimen.source')}
+    <a href="https://developer.apple.com/iphone-duo/prepare/" target="_blank" rel="noreferrer">Apple Developer ↗</a>
+  </p>
+</div>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-hero-specimen]');
+  if (root) {
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('[data-specimen-tab]')];
+    const panels = [...root.querySelectorAll<HTMLElement>('[data-specimen-panel]')];
+
+    function activate(key: string, focus = false) {
+      for (const tab of tabs) {
+        const active = tab.dataset.specimenTab === key;
+        tab.setAttribute('aria-selected', String(active));
+        tab.tabIndex = active ? 0 : -1;
+        if (active && focus) tab.focus();
+      }
+      for (const panel of panels) {
+        panel.hidden = panel.dataset.specimenPanel !== key;
+      }
+    }
+
+    for (const tab of tabs) {
+      tab.addEventListener('click', () => activate(tab.dataset.specimenTab!));
+    }
+
+    root.querySelector('[role="tablist"]')?.addEventListener('keydown', (event) => {
+      if (!(event instanceof KeyboardEvent) || !['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+      event.preventDefault();
+      const current = tabs.findIndex((tab) => tab.getAttribute('aria-selected') === 'true');
+      const direction = event.key === 'ArrowRight' ? 1 : -1;
+      const next = tabs[(current + direction + tabs.length) % tabs.length];
+      activate(next.dataset.specimenTab!, true);
+    });
+  }
+</script>

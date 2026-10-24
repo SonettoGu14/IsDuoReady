@@ -1,0 +1,17 @@
+name: "Meitu"
+name_zh: "美图秀秀"
+rank: 25
+developer: "Meitu Technology Co., Ltd."
+category: creativity
+store_id: "416048305"
+icon: /icons/meitu.jpg
+aliases: ["美图"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "12.21.5"
+  current_version_release_date: "2026-10-21"
+  synced_at: "2026-10-24"

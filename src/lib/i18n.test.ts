@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { getSummary, t } from './i18n';
+import { getAppName, getSummary, t } from './i18n';
 import type { AppEntry } from './types';
 
 const entry: AppEntry = {
@@ -11,6 +11,14 @@ const entry: AppEntry = {
   features: ['apple-featured'],
   issues: [],
 };
+
+describe('getAppName', () => {
+  it('uses the Chinese name on Chinese pages and falls back to the primary name', () => {
+    expect(getAppName({ ...entry, name: 'AMap', name_zh: '高德地图' }, 'zh')).toBe('高德地图');
+    expect(getAppName({ ...entry, name: 'AMap', name_zh: '高德地图' }, 'en')).toBe('AMap');
+    expect(getAppName({ ...entry, name: 'WeChat' }, 'zh')).toBe('WeChat');
+  });
+});
 
 describe('t', () => {
   it('returns localized interface copy', () => {

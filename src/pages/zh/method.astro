@@ -1,5 +1,6 @@
 ---
-import MethodPage from '../../components/MethodPage.astro';
+import LegacyRedirect from '../../components/LegacyRedirect.astro';
+import { localePath } from '../../lib/url';
 ---
 
-<MethodPage lang="zh" />
+<LegacyRedirect to={localePath('zh', '/method/')} />

@@ -5,7 +5,7 @@ import TierMark from './TierMark.astro';
 import SdkChip from './SdkChip.astro';
 import EvidenceLabel from './EvidenceLabel.astro';
 import CheckList from './CheckList.astro';
-import { getSdkLabel, getSummary, t } from '../lib/i18n';
+import { getAppName, getSdkLabel, getSummary, t } from '../lib/i18n';
 import { getHealth, getTier, isStale } from '../lib/status';
 import { localePath } from '../lib/url';
 import type { AppEntry, Locale } from '../lib/types';
@@ -18,11 +18,12 @@ const { app, lang } = Astro.props;
 const tier = getTier(app);
 const health = getHealth(app);
 const summary = getSummary(app, lang);
-const question = lang === 'en' ? `Is ${app.name} iPhone Duo ready?` : `${app.name} 适配 iPhone Duo 吗？`;
+const displayName = getAppName(app, lang);
+const question = lang === 'en' ? `Is ${displayName} iPhone Duo ready?` : `${displayName} 适配 iPhone Duo 吗？`;
 const title = `${question} — IsDuoReady`;
 const storeUrl = app.store_id ? `https://apps.apple.com/app/id${app.store_id}` : null;
-const correctionUrl = `https://github.com/SonettoGu14/IsDuoReady/issues/new?template=correct-data.yml&title=${encodeURIComponent(`[Correction] ${app.name}`)}`;
-const evidenceUrl = `https://github.com/SonettoGu14/IsDuoReady/issues/new?template=report-app.yml&title=${encodeURIComponent(`[Report] ${app.name}`)}`;
+const correctionUrl = `https://github.com/SonettoGu14/IsDuoReady/issues/new?template=correct-data.yml&title=${encodeURIComponent(`[Correction] ${displayName}`)}`;
+const evidenceUrl = `https://github.com/SonettoGu14/IsDuoReady/issues/new?template=report-app.yml&title=${encodeURIComponent(`[Report] ${displayName}`)}`;
 ---
 
 <BaseLayout lang={lang} title={title} description={summary.text}>
@@ -34,8 +35,8 @@ const evidenceUrl = `https://github.com/SonettoGu14/IsDuoReady/issues/new?templa
         <div class="verdict-app">
           <AppIcon app={app} size="large" eager />
           <div>
-            <h1>{app.name}</h1>
-            {app.name_zh && app.name_zh !== app.name && <p class="app-name-zh">{app.name_zh}</p>}
+            <h1>{displayName}</h1>
+            {lang === 'en' && app.name_zh && <p class="app-name-zh" lang="zh-Hans">{app.name_zh}</p>}
             <p class="app-byline">{app.developer} · {t(lang, `category.${app.category}`)}</p>
           </div>
         </div>

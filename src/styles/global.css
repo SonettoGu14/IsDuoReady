@@ -400,6 +400,68 @@ html:lang(zh-Hans) .hero-copy h1 {
   min-width: 0;
 }
 
+.hero-specimen-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.hero-specimen-tabs button {
+  border: 0;
+  border-bottom: 2px solid transparent;
+  padding: 10px 4px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.hero-specimen-tabs button[aria-selected="true"] {
+  border-color: var(--accent);
+  color: var(--ink);
+}
+
+.hero-specimen-stage {
+  border: 1px solid var(--rule);
+  background: #fff;
+}
+
+.hero-specimen-panel[hidden] {
+  display: none;
+}
+
+.hero-specimen-panel a {
+  display: block;
+}
+
+.hero-specimen-panel img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1300 / 722;
+}
+
+.hero-specimen-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-top: 1px solid var(--rule);
+  background: var(--paper);
+}
+
+.hero-specimen-source {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 11px;
+  text-align: right;
+}
+
+.hero-specimen-source a {
+  color: var(--accent);
+}
+
 .pose-toggle {
   display: flex;
   justify-content: center;
@@ -1618,6 +1680,19 @@ html:lang(zh-Hans) .page-hero h1 {
 
   .specimen figcaption .tier-mark {
     font-size: 12px;
+  }
+
+  .hero-specimen-tabs button {
+    padding: 9px 2px;
+    font-size: 11px;
+  }
+
+  .hero-specimen-meta {
+    padding: 8px 10px;
+  }
+
+  .hero-specimen-source {
+    font-size: 10px;
   }
 
   .filter-controls {

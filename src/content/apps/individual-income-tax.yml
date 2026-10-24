@@ -1,0 +1,17 @@
+name: "Individual Income Tax"
+name_zh: "个人所得税"
+rank: 38
+developer: "State Administration of Taxation"
+category: finance
+store_id: "1436002627"
+icon: /icons/individual-income-tax.jpg
+aliases: ["个税"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "2.3.4"
+  current_version_release_date: "2026-08-29"
+  synced_at: "2026-10-24"

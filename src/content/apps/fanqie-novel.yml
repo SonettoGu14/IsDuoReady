@@ -1,0 +1,17 @@
+name: "Fanqie Novel"
+name_zh: "番茄小说"
+rank: 42
+developer: "Beijing Zhending Technology Co., Ltd."
+category: reading
+store_id: "1468454200"
+icon: /icons/fanqie-novel.jpg
+aliases: ["番茄"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "7.4.1"
+  current_version_release_date: "2026-10-20"
+  synced_at: "2026-10-24"

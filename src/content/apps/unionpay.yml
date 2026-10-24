@@ -1,0 +1,17 @@
+name: "UnionPay"
+name_zh: "云闪付"
+rank: 34
+developer: "中国银联"
+category: finance
+store_id: "600273928"
+icon: /icons/unionpay.jpg
+aliases: ["银联"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "10.3.8"
+  current_version_release_date: "2026-10-08"
+  synced_at: "2026-10-24"

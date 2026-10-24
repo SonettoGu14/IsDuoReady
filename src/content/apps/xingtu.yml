@@ -1,0 +1,16 @@
+name: "Xingtu"
+name_zh: "醒图"
+rank: 24
+developer: "深圳市脸萌科技有限公司"
+category: creativity
+store_id: "1500526240"
+icon: /icons/xingtu.jpg
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "15.7.0"
+  current_version_release_date: "2026-10-20"
+  synced_at: "2026-10-24"

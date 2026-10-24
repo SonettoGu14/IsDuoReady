@@ -1,0 +1,17 @@
+name: "Teamfight Tactics"
+name_zh: "金铲铲之战"
+rank: 54
+developer: "Shenzhen Tencent Tianyou Technology Ltd"
+category: games
+store_id: "1478101301"
+icon: /icons/teamfight-tactics.jpg
+aliases: ["金铲铲"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "1.14.35（1188）"
+  current_version_release_date: "2026-09-28"
+  synced_at: "2026-10-24"

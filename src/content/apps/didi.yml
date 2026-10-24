@@ -1,0 +1,17 @@
+name: "DiDi"
+name_zh: "滴滴出行"
+rank: 12
+developer: "滴滴出行(北京)网络平台技术有限公司"
+category: travel
+store_id: "554499054"
+icon: /icons/didi.jpg
+aliases: ["滴滴", "滴滴打车"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "8.0.17"
+  current_version_release_date: "2026-10-21"
+  synced_at: "2026-10-24"

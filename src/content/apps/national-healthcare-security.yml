@@ -1,0 +1,17 @@
+name: "National Healthcare Security"
+name_zh: "国家医保服务平台"
+rank: 39
+developer: "National Healthcare Security Administration"
+category: health
+store_id: "1490383593"
+icon: /icons/national-healthcare-security.jpg
+aliases: ["医保"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "1.3.36"
+  current_version_release_date: "2026-09-15"
+  synced_at: "2026-10-24"

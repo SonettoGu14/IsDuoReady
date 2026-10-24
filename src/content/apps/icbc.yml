@@ -1,0 +1,17 @@
+name: "ICBC"
+name_zh: "中国工商银行"
+rank: 35
+developer: "Industrial and Commercial Bank of China"
+category: finance
+store_id: "423514795"
+icon: /icons/icbc.jpg
+aliases: ["工行"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "11.1.0.9.0"
+  current_version_release_date: "2026-10-19"
+  synced_at: "2026-10-24"

@@ -1,0 +1,17 @@
+name: "Duolingo"
+name_zh: "多邻国"
+rank: 40
+developer: "Duolingo"
+category: education
+store_id: "570060128"
+icon: /icons/duolingo.jpg
+aliases: ["Duolingo"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "7.145.1"
+  current_version_release_date: "2026-10-21"
+  synced_at: "2026-10-24"

@@ -1,0 +1,17 @@
+name: "Quark"
+name_zh: "夸克"
+rank: 27
+developer: "广州市动悦信息技术有限公司"
+category: utilities
+store_id: "1160172628"
+icon: /icons/quark.jpg
+aliases: ["夸克浏览器"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "10.19.5.3237"
+  current_version_release_date: "2026-10-22"
+  synced_at: "2026-10-24"

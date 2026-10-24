@@ -1,0 +1,17 @@
+name: "BOSS Zhipin"
+name_zh: "BOSS直聘"
+rank: 48
+developer: "北京华品博睿网络技术有限公司"
+category: productivity
+store_id: "887314963"
+icon: /icons/boss-zhipin.jpg
+aliases: ["BOSS直聘"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "14.180"
+  current_version_release_date: "2026-10-10"
+  synced_at: "2026-10-24"

@@ -10,16 +10,16 @@ describe('normalizeBase', () => {
 });
 
 describe('localePath', () => {
-  it('builds unprefixed English and prefixed Chinese project-page URLs', () => {
-    expect(localePath('en', '/', '/IsDuoReady')).toBe('/IsDuoReady/');
-    expect(localePath('zh', '/', '/IsDuoReady')).toBe('/IsDuoReady/zh/');
-    expect(localePath('en', '/method/', '/IsDuoReady')).toBe('/IsDuoReady/method/');
-    expect(localePath('zh', '/method/', '/IsDuoReady')).toBe('/IsDuoReady/zh/method/');
+  it('builds unprefixed Chinese and prefixed English project-page URLs', () => {
+    expect(localePath('zh', '/', '/IsDuoReady')).toBe('/IsDuoReady/');
+    expect(localePath('en', '/', '/IsDuoReady')).toBe('/IsDuoReady/en/');
+    expect(localePath('zh', '/method/', '/IsDuoReady')).toBe('/IsDuoReady/method/');
+    expect(localePath('en', '/method/', '/IsDuoReady')).toBe('/IsDuoReady/en/method/');
   });
 
   it('does not double-prefix the base path', () => {
-    expect(appPath('zh', 'fantastical', '/IsDuoReady')).toBe(
-      '/IsDuoReady/zh/app/fantastical/',
+    expect(appPath('en', 'fantastical', '/IsDuoReady')).toBe(
+      '/IsDuoReady/en/app/fantastical/',
     );
   });
 });
@@ -35,10 +35,10 @@ describe('assetPath', () => {
 
 describe('switchLocalePath', () => {
   it('preserves the current page when switching languages', () => {
-    expect(switchLocalePath('/IsDuoReady/app/fantastical/', 'zh', '/IsDuoReady')).toBe(
-      '/IsDuoReady/zh/app/fantastical/',
+    expect(switchLocalePath('/IsDuoReady/app/fantastical/', 'en', '/IsDuoReady')).toBe(
+      '/IsDuoReady/en/app/fantastical/',
     );
-    expect(switchLocalePath('/IsDuoReady/zh/app/fantastical/', 'en', '/IsDuoReady')).toBe(
+    expect(switchLocalePath('/IsDuoReady/en/app/fantastical/', 'zh', '/IsDuoReady')).toBe(
       '/IsDuoReady/app/fantastical/',
     );
   });

@@ -1,0 +1,17 @@
+name: "Feishu"
+name_zh: "飞书"
+rank: 32
+developer: "Beijing Feishu Technology Co., Ltd."
+category: productivity
+store_id: "1401729613"
+icon: /icons/feishu.jpg
+aliases: ["Lark"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "8.3.38"
+  current_version_release_date: "2026-10-20"
+  synced_at: "2026-10-24"

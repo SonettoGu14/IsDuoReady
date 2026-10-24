@@ -1,0 +1,17 @@
+name: "Naruto Mobile"
+name_zh: "火影忍者"
+rank: 55
+developer: "Shenzhen Tencent Tianyou Technology Ltd"
+category: games
+store_id: "955396648"
+icon: /icons/naruto-mobile.jpg
+aliases: ["火影手游"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "1.79.79.9"
+  current_version_release_date: "2026-09-09"
+  synced_at: "2026-10-24"

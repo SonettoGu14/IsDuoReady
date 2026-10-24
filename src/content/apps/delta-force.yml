@@ -1,0 +1,17 @@
+name: "Delta Force"
+name_zh: "三角洲行动"
+rank: 53
+developer: "Shenzhen Tencent Tianyou Technology Ltd"
+category: games
+store_id: "1642894547"
+icon: /icons/delta-force.jpg
+aliases: ["三角洲"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "1.201.37117"
+  current_version_release_date: "2026-09-03"
+  synced_at: "2026-10-24"

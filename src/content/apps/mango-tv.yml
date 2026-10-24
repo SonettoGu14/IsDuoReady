@@ -1,0 +1,17 @@
+name: "Mango TV"
+name_zh: "芒果TV"
+rank: 19
+developer: "快乐阳光"
+category: entertainment
+store_id: "629774477"
+icon: /icons/mango-tv.jpg
+aliases: ["芒果tv"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "9.4.6"
+  current_version_release_date: "2026-10-23"
+  synced_at: "2026-10-24"

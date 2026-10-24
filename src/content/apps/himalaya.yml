@@ -1,0 +1,17 @@
+name: "Himalaya"
+name_zh: "喜马拉雅"
+rank: 41
+developer: "Xi Da (Shanghai) Network Technology Co., Ltd."
+category: reading
+store_id: "876336838"
+icon: /icons/himalaya.jpg
+aliases: ["喜马拉雅FM"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "9.5.13"
+  current_version_release_date: "2026-09-18"
+  synced_at: "2026-10-24"

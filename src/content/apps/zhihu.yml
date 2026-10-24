@@ -1,0 +1,16 @@
+name: "Zhihu"
+name_zh: "知乎"
+rank: 50
+developer: "Beijing Zhizhetianxia Technology Co., Ltd."
+category: social
+store_id: "432274380"
+icon: /icons/zhihu.jpg
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "11.12.0"
+  current_version_release_date: "2026-10-23"
+  synced_at: "2026-10-24"

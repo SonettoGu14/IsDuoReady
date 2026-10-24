@@ -1,18 +1,17 @@
-name: Taobao
-name_zh: 淘宝
-developer: 浙江淘宝网络有限公司
+name: "Taobao"
+name_zh: "淘宝"
+rank: 5
+developer: "浙江淘宝网络有限公司"
 category: shopping
 store_id: "387682726"
 icon: /icons/taobao.jpg
-aliases:
-  - 淘宝
+aliases: ["淘宝网"]
 build:
   sdk: unknown
   evidence: unknown
-features:
-  - apple-featured
+features: []
 issues: []
 store:
-  current_version: 10.68.0
-  current_version_release_date: 2026-10-13
-  synced_at: 2026-10-24
+  current_version: "10.68.0"
+  current_version_release_date: "2026-10-13"
+  synced_at: "2026-10-24"

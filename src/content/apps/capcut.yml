@@ -1,0 +1,17 @@
+name: "CapCut"
+name_zh: "剪映"
+rank: 23
+developer: "深圳市脸萌科技有限公司"
+category: creativity
+store_id: "1458072671"
+icon: /icons/capcut.jpg
+aliases: ["剪映专业版"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "21.8.0"
+  current_version_release_date: "2026-10-20"
+  synced_at: "2026-10-24"

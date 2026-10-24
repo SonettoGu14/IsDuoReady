@@ -1,0 +1,16 @@
+name: "DingTalk"
+name_zh: "钉钉"
+rank: 30
+developer: "DingTalk Technology Co., Ltd."
+category: productivity
+store_id: "930368978"
+icon: /icons/dingtalk.jpg
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "9.0.5"
+  current_version_release_date: "2026-10-22"
+  synced_at: "2026-10-24"

@@ -1,0 +1,17 @@
+name: "Traffic 12123"
+name_zh: "交管12123"
+rank: 37
+developer: "公安部交通管理科学研究所"
+category: utilities
+store_id: "1039727169"
+icon: /icons/traffic-12123.jpg
+aliases: ["12123"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "3.5.9"
+  current_version_release_date: "2026-10-19"
+  synced_at: "2026-10-24"

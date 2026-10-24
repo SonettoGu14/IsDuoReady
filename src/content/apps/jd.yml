@@ -1,0 +1,17 @@
+name: "JD"
+name_zh: "京东"
+rank: 7
+developer: "Beijing Jingdong Century Trading Co., Ltd."
+category: shopping
+store_id: "414245413"
+icon: /icons/jd.jpg
+aliases: ["京东商城", "JD.com"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "16.1.50"
+  current_version_release_date: "2026-10-22"
+  synced_at: "2026-10-24"

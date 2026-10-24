@@ -102,6 +102,21 @@ describe('getHealth', () => {
 });
 
 describe('compareApps', () => {
+  it('uses the China popularity rank before the name', () => {
+    const first = app({ id: 'first', name: 'Zulu', rank: 1 });
+    const second = app({ id: 'second', name: 'Alpha', rank: 2 });
+    expect([second, first].sort(compareApps).map((entry) => entry.id)).toEqual(['first', 'second']);
+  });
+
+  it('sorts by the localized app name on Chinese pages', () => {
+    const alipay = app({ id: 'alipay', name: 'Alipay', name_zh: '支付宝' });
+    const wechat = app({ id: 'wechat', name: 'WeChat', name_zh: '微信' });
+    expect([alipay, wechat].sort((a, b) => compareApps(a, b, 'zh')).map((entry) => entry.id)).toEqual([
+      'wechat',
+      'alipay',
+    ]);
+  });
+
   it('sorts by tier, puts broken apps last, then uses the name', () => {
     const optimized = app({ id: 'z', name: 'Zulu', build: { sdk: '27.1', evidence: 'developer' } });
     const compatible = app({ id: 'a', name: 'Alpha', build: { sdk: '26', evidence: 'binary' } });

@@ -3,11 +3,11 @@ import AppPage from '../../components/AppPage.astro';
 import { getApps } from '../../lib/data';
 
 export async function getStaticPaths() {
-  const apps = await getApps();
+  const apps = await getApps('zh');
   return apps.map((app) => ({ params: { slug: app.id }, props: { app } }));
 }
 
 const { app } = Astro.props;
 ---
 
-<AppPage lang="en" app={app} />
+<AppPage lang="zh" app={app} />

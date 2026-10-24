@@ -1,0 +1,17 @@
+name: "WeCom"
+name_zh: "企业微信"
+rank: 31
+developer: "Tencent Technology (Shenzhen) Company Limited"
+category: productivity
+store_id: "1087897068"
+icon: /icons/wecom.jpg
+aliases: ["企业微信"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "5.0.13"
+  current_version_release_date: "2026-10-23"
+  synced_at: "2026-10-24"

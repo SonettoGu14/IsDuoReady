@@ -1,0 +1,16 @@
+name: "Dianping"
+name_zh: "大众点评"
+rank: 9
+developer: "Hanhai Information Technology (Shanghai) Co.Ltd"
+category: food
+store_id: "351091731"
+icon: /icons/dianping.jpg
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "11.73.13"
+  current_version_release_date: "2026-10-21"
+  synced_at: "2026-10-24"

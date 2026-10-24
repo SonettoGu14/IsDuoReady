@@ -1,19 +1,17 @@
-name: Weibo
-name_zh: 微博
-developer: SINA Corporation
+name: "Weibo"
+name_zh: "微博"
+rank: 14
+developer: "SINA Corporation"
 category: social
 store_id: "350962117"
 icon: /icons/weibo.jpg
-aliases:
-  - 微博
-  - Sina Weibo
+aliases: ["新浪微博"]
 build:
   sdk: unknown
   evidence: unknown
-features:
-  - apple-featured
+features: []
 issues: []
 store:
-  current_version: 16.10.2
-  current_version_release_date: 2026-10-21
-  synced_at: 2026-10-24
+  current_version: "16.10.2"
+  current_version_release_date: "2026-10-21"
+  synced_at: "2026-10-24"

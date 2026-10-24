@@ -1,0 +1,17 @@
+name: "Honor of Kings"
+name_zh: "王者荣耀"
+rank: 51
+developer: "Shenzhen Tencent Tianyou Technology Ltd"
+category: games
+store_id: "989673964"
+icon: /icons/honor-of-kings.jpg
+aliases: ["王者"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "12.1.1.1"
+  current_version_release_date: "2026-09-22"
+  synced_at: "2026-10-24"

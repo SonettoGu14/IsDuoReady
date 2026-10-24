@@ -1,8 +1,6 @@
 ---
-import HomePage from '../../components/HomePage.astro';
-import { getApps } from '../../lib/data';
-
-const apps = await getApps();
+import LegacyRedirect from '../../components/LegacyRedirect.astro';
+import { localePath } from '../../lib/url';
 ---
 
-<HomePage lang="zh" apps={apps} />
+<LegacyRedirect to={localePath('zh', '/')} />

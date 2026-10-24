@@ -18,6 +18,10 @@ const en = {
   'home.pose.closed': 'Closed',
   'home.pose.open': 'Open',
   'home.specimen_caption': 'The same app, three build tiers.',
+  'home.specimen.source': 'Device images:',
+  'home.specimen.compatible.alt': 'iPhone Duo built with the iOS 26 SDK: the app appears in a centered window on the inner display and leaves unused space on the outer display.',
+  'home.specimen.resizable.alt': 'iPhone Duo built with the iOS 27.0 SDK: the app fills most of the inner display but leaves a strip at the status-bar edge.',
+  'home.specimen.optimized.alt': 'iPhone Duo built with the iOS 27.1 SDK: the app extends edge to edge with vertical controls.',
   'home.counts': '{optimized} optimized · {resizable} resizable · {compatible} compatible · {unrated} unrated',
   'home.filter.all': 'All',
   'home.filter.verified': 'Verified only',
@@ -123,6 +127,7 @@ const en = {
   'category.games': 'Games',
   'category.food': 'Food & dining',
   'category.shopping': 'Shopping',
+  'category.finance': 'Finance',
   'category.travel': 'Travel',
   'category.music': 'Music',
   'category.reading': 'Reading',
@@ -183,6 +188,10 @@ const zh: Record<MessageKey, string> = {
   'home.pose.closed': '合上',
   'home.pose.open': '展开',
   'home.specimen_caption': '同一个 app，三个构建档位。',
+  'home.specimen.source': '设备图来源：',
+  'home.specimen.compatible.alt': '使用 iOS 26 SDK 构建的 iPhone Duo：app 在内屏显示为居中窗口，外屏留有空白。',
+  'home.specimen.resizable.alt': '使用 iOS 27.0 SDK 构建的 iPhone Duo：app 内屏接近全宽，但状态栏一侧仍留有一条空白。',
+  'home.specimen.optimized.alt': '使用 iOS 27.1 SDK 构建的 iPhone Duo：app 内外屏全宽，控件竖排。',
   'home.counts': '{optimized} 已优化 · {resizable} 可缩放 · {compatible} 可运行 · {unrated} 未评级',
   'home.filter.all': '全部',
   'home.filter.verified': '只看已验证',
@@ -280,6 +289,7 @@ const zh: Record<MessageKey, string> = {
   'category.games': '游戏',
   'category.food': '美食餐饮',
   'category.shopping': '购物',
+  'category.finance': '金融',
   'category.travel': '出行旅游',
   'category.music': '音乐',
   'category.reading': '阅读',
@@ -321,6 +331,10 @@ const zh: Record<MessageKey, string> = {
 
 export function t(locale: Locale, key: MessageKey): string {
   return locale === 'zh' ? zh[key] : en[key];
+}
+
+export function getAppName(app: AppEntry, locale: Locale): string {
+  return locale === 'zh' && app.name_zh ? app.name_zh : app.name;
 }
 
 export function getSummary(

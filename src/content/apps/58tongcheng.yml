@@ -1,0 +1,17 @@
+name: "58.com"
+name_zh: "58同城"
+rank: 47
+developer: "北京城市网邻信息技术有限公司"
+category: utilities
+store_id: "480079300"
+icon: /icons/58tongcheng.jpg
+aliases: ["58"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "13.60.1"
+  current_version_release_date: "2026-10-13"
+  synced_at: "2026-10-24"

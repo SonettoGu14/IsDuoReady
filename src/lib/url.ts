@@ -11,7 +11,7 @@ function normalizePagePath(path: string): string {
 }
 
 export function localePath(locale: Locale, path: string, base = import.meta.env.BASE_URL): string {
-  const localePrefix = locale === 'zh' ? '/zh' : '';
+  const localePrefix = locale === 'en' ? '/en' : '';
   return `${normalizeBase(base)}${localePrefix}${normalizePagePath(path)}`;
 }
 
@@ -32,7 +32,7 @@ export function switchLocalePath(
   let path = currentPath.startsWith(normalizedBase)
     ? currentPath.slice(normalizedBase.length)
     : currentPath;
-  if (path.startsWith('/zh/')) path = path.slice(3);
-  if (path === '/zh') path = '/';
+  if (path.startsWith('/en/')) path = path.slice(3);
+  if (path === '/en') path = '/';
   return localePath(targetLocale, path, base);
 }

@@ -1,0 +1,17 @@
+name: "Bilibili"
+name_zh: "哔哩哔哩"
+rank: 15
+developer: "bilibili"
+category: entertainment
+store_id: "736536022"
+icon: /icons/bilibili.jpg
+aliases: ["B站", "Bilibili"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "9.16.0"
+  current_version_release_date: "2026-10-20"
+  synced_at: "2026-10-24"

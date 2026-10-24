@@ -1,0 +1,17 @@
+name: "Kugou Music"
+name_zh: "酷狗音乐"
+rank: 22
+developer: "Guangzhou KuGou Technology CO. , LTD"
+category: music
+store_id: "472208016"
+icon: /icons/kugou-music.jpg
+aliases: ["酷狗"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "20.8.6"
+  current_version_release_date: "2026-10-22"
+  synced_at: "2026-10-24"

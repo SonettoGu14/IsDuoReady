@@ -1,5 +1,6 @@
 ---
-import ContributePage from '../../components/ContributePage.astro';
+import LegacyRedirect from '../../components/LegacyRedirect.astro';
+import { localePath } from '../../lib/url';
 ---
 
-<ContributePage lang="zh" />
+<LegacyRedirect to={localePath('zh', '/contribute/')} />

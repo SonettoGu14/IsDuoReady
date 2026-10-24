@@ -1,0 +1,17 @@
+name: "QQ"
+name_zh: "QQ"
+rank: 2
+developer: "Tencent Technology (Shenzhen) Company Limited"
+category: social
+store_id: "444934666"
+icon: /icons/qq.jpg
+aliases: ["腾讯QQ"]
+build:
+  sdk: unknown
+  evidence: unknown
+features: []
+issues: []
+store:
+  current_version: "9.3.78"
+  current_version_release_date: "2026-10-23"
+  synced_at: "2026-10-24"

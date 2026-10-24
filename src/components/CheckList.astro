@@ -1,5 +1,5 @@
 ---
-import { t } from '../lib/i18n';
+import { getAppName, t } from '../lib/i18n';
 import { CHECKS, type AppEntry, type Locale } from '../lib/types';
 
 interface Props {
@@ -8,6 +8,7 @@ interface Props {
 }
 const { app, lang } = Astro.props;
 const checks = app.test?.checks;
+const displayName = getAppName(app, lang);
 ---
 
 {
@@ -34,7 +35,7 @@ const checks = app.test?.checks;
       <p>{t(lang, 'app.no_checklist')}</p>
       <a
         class="text-link"
-        href={`https://github.com/SonettoGu14/IsDuoReady/issues/new?template=report-app.yml&title=${encodeURIComponent(`[Report] ${app.name}`)}`}
+        href={`https://github.com/SonettoGu14/IsDuoReady/issues/new?template=report-app.yml&title=${encodeURIComponent(`[Report] ${displayName}`)}`}
         target="_blank"
         rel="noreferrer"
       >

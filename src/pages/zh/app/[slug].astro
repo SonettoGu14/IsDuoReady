@@ -1,13 +1,14 @@
 ---
-import AppPage from '../../../components/AppPage.astro';
+import LegacyRedirect from '../../../components/LegacyRedirect.astro';
 import { getApps } from '../../../lib/data';
+import { appPath } from '../../../lib/url';
 
 export async function getStaticPaths() {
-  const apps = await getApps();
-  return apps.map((app) => ({ params: { slug: app.id }, props: { app } }));
+  const apps = await getApps('zh');
+  return apps.map((app) => ({ params: { slug: app.id }, props: { slug: app.id } }));
 }
 
-const { app } = Astro.props;
+const { slug } = Astro.props;
 ---
 
-<AppPage lang="zh" app={app} />
+<LegacyRedirect to={appPath('zh', slug)} />

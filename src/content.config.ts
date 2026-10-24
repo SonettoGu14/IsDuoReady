@@ -19,6 +19,7 @@ const apps = defineCollection({
     name_zh: z.string().optional(),
     developer: z.string(),
     developer_zh: z.string().optional(),
+    rank: z.number().int().positive().optional(),
     category: z.enum([
       'entertainment',
       'sports',
@@ -27,6 +28,7 @@ const apps = defineCollection({
       'games',
       'food',
       'shopping',
+      'finance',
       'travel',
       'music',
       'reading',
