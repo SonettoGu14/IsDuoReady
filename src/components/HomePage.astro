@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Specimen from './Specimen.astro';
 import AppRow from './AppRow.astro';
 import { getLatestUpdate } from '../lib/data';
+import { toJsonScript } from '../lib/json';
 import { t } from '../lib/i18n';
 import { getTier } from '../lib/status';
 import type { AppEntry, Category, Locale, Tier } from '../lib/types';
@@ -137,10 +138,10 @@ const title = `${t(lang, 'site.title')} — IsDuoReady`;
         {t(lang, 'home.empty.action')}
       </a>
     </div>
-    <p class="index-meta"><span id="result-count">{apps.length}</span> / {apps.length} · {latest}</p>
+    <p class="index-meta" role="status" aria-live="polite" aria-atomic="true"><span id="result-count">{apps.length}</span> / {apps.length} · {latest}</p>
   </section>
 
-  <script is:inline type="application/json" id="app-search-data" set:html={JSON.stringify(searchData)}></script>
+  <script is:inline type="application/json" id="app-search-data" set:html={toJsonScript(searchData)}></script>
   <script>
     import Fuse from 'fuse.js';
 
@@ -165,7 +166,11 @@ const title = `${t(lang, 'site.title')} — IsDuoReady`;
 
     function apply() {
       const query = state.q.trim();
-      const matches = query ? new Set(fuse.search(query).map((result) => result.item.slug)) : null;
+      const rankedResults = query ? fuse.search(query) : null;
+      const matches = rankedResults ? new Set(rankedResults.map((result) => result.item.slug)) : null;
+      const searchRanks = rankedResults
+        ? new Map(rankedResults.map((result, index) => [result.item.slug, index]))
+        : null;
       let visible = 0;
       for (const row of rows) {
         const show =
@@ -179,6 +184,9 @@ const title = `${t(lang, 'site.title')} — IsDuoReady`;
       }
 
       const sorted = [...rows].sort((a, b) => {
+        if (searchRanks) {
+          return (searchRanks.get(a.dataset.slug!) ?? 9999) - (searchRanks.get(b.dataset.slug!) ?? 9999);
+        }
         if (state.sort === 'recent') return (b.dataset.date || '').localeCompare(a.dataset.date || '');
         if (state.sort === 'name') return a.dataset.name!.localeCompare(b.dataset.name!);
         return originalOrder.get(a.dataset.slug)! - originalOrder.get(b.dataset.slug)!;

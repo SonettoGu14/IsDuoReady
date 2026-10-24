@@ -37,4 +37,23 @@ describe('getSummary', () => {
     expect(getSummary(entry, 'en').text).toContain('No build or device evidence');
     expect(getSummary(entry, 'zh').text).toContain('尚无构建或实机证据');
   });
+
+  it('qualifies inferred SDK claims instead of stating them as binary facts', () => {
+    const inferred = {
+      ...entry,
+      build: { sdk: '27.1' as const, evidence: 'inferred' as const },
+    };
+    expect(getSummary(inferred, 'en').text).toContain('suggest');
+    expect(getSummary(inferred, 'en').text).toContain('not binary proof');
+    expect(getSummary(inferred, 'zh').text).toContain('只是推断');
+  });
+
+  it('qualifies developer-claimed SDK tiers', () => {
+    const claimed = {
+      ...entry,
+      build: { sdk: '27.1' as const, evidence: 'developer' as const },
+    };
+    expect(getSummary(claimed, 'en').text).toContain('claim');
+    expect(getSummary(claimed, 'en').text).toContain('not a device verification');
+  });
 });

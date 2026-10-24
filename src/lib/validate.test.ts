@@ -53,6 +53,11 @@ describe('validateApps', () => {
     expect(errors.join('\n')).toContain('broken issue requires evidence');
   });
 
+  it('requires a device test when build evidence is observed', () => {
+    const errors = validateApps([app({ build: { sdk: '27.1', evidence: 'observed' } })]);
+    expect(errors.join('\n')).toContain('observed build evidence requires a device test');
+  });
+
   it('rejects unknown feature tags', () => {
     const errors = validateApps([app({ features: ['totally-made-up' as never] })]);
     expect(errors.join('\n')).toContain('unknown feature');

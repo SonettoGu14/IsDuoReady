@@ -34,7 +34,7 @@ export function getConfidence(app: AppEntry): Confidence {
     case 'binary':
       return 'verified';
     case 'observed':
-      return 'community';
+      return 'unverified';
     case 'developer':
     case 'claimed':
       return 'claimed';

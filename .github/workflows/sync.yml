@@ -20,7 +20,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run sync
-      - uses: peter-evans/create-pull-request@v7
+      - id: cpr
+        uses: peter-evans/create-pull-request@v7
         with:
           branch: chore/app-store-sync
           delete-branch: true
@@ -28,3 +29,9 @@ jobs:
           title: 'chore: sync App Store metadata'
           body: 'Nightly App Store version and icon sync. Review version changes against the device-tested version before merging.'
           labels: data
+      - name: Run CI on the sync branch
+        if: steps.cpr.outputs.pull-request-number
+        run: gh workflow run ci.yml --ref chore/app-store-sync
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}

@@ -26,6 +26,12 @@ export function validateApps(apps: AppEntry[]): string[] {
     if (app.build.sdk !== 'unknown' && app.build.evidence === 'unknown') {
       errors.push(`${app.id}: known SDK requires build evidence`);
     }
+    if (
+      app.build.evidence === 'observed' &&
+      (!app.test || !['verified', 'community'].includes(app.test.confidence))
+    ) {
+      errors.push(`${app.id}: observed build evidence requires a device test`);
+    }
 
     if (app.test?.confidence === 'verified') {
       if (!app.test.version) errors.push(`${app.id}: verified test requires version`);

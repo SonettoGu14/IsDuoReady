@@ -56,6 +56,10 @@ describe('getConfidence', () => {
     expect(getConfidence(app())).toBe('unverified');
   });
 
+  it('does not invent community verification from observed build evidence alone', () => {
+    expect(getConfidence(app({ build: { sdk: '27.1', evidence: 'observed' } }))).toBe('unverified');
+  });
+
   it('only treats verified and community evidence as solid', () => {
     expect(isSolidEvidence(app({ build: { sdk: '27.1', evidence: 'developer' } }))).toBe(false);
     expect(isSolidEvidence(app({ build: { sdk: '27.1', evidence: 'binary' } }))).toBe(true);

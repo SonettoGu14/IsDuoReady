@@ -10,6 +10,8 @@ const en = {
   'nav.method': 'Method',
   'nav.contribute': 'Contribute',
   'nav.theme': 'Toggle color theme',
+  'nav.theme.light': 'Switch to light theme',
+  'nav.theme.dark': 'Switch to dark theme',
   'home.title': 'Which apps actually use the Duo?',
   'home.subtitle': "Three build tiers. Evidence before labels. Store badges don't count.",
   'home.search_placeholder': 'Search {count} apps',
@@ -53,10 +55,14 @@ const en = {
   'summary.unrated': 'No SDK or device evidence has been recorded yet.',
   'summary.unrated.featured':
     'Featured by Apple for iPhone Duo. No build or device evidence has been recorded yet.',
+  'summary.inferred':
+    'Visible layout signatures suggest {sdk}. This is an inference, not binary proof or a device verification.',
+  'summary.claimed': 'The reported build is {sdk}. This is a claim, not a device verification.',
   'summary.fallback': 'EN',
   'evidence.verified': '✓ device',
   'evidence.binary': '✓ binary',
   'evidence.community': '{count} reports',
+  'evidence.community.generic': 'community',
   'evidence.claimed': 'dev claim',
   'evidence.inferred': '≈ inferred',
   'evidence.unverified': '—',
@@ -169,6 +175,8 @@ const zh: Record<MessageKey, string> = {
   'nav.method': '判定方法',
   'nav.contribute': '参与众测',
   'nav.theme': '切换颜色主题',
+  'nav.theme.light': '切换到浅色主题',
+  'nav.theme.dark': '切换到深色主题',
   'home.title': '哪些 app 真的适配了 Duo？',
   'home.subtitle': '三个构建档位，证据先于标签。商店徽章不算数。',
   'home.search_placeholder': '搜索 {count} 个 app',
@@ -205,10 +213,13 @@ const zh: Record<MessageKey, string> = {
   'summary.compatible': '使用 iOS 26 SDK 或更早版本构建。以兼容模式运行，不会使用完整双屏。',
   'summary.unrated': '尚未记录 SDK 或实机证据。',
   'summary.unrated.featured': 'Apple 在 iPhone Duo 精选中收录。尚无构建或实机证据。',
+  'summary.inferred': '可见布局特征指向 {sdk}；这只是推断，不是二进制证明或实机验证。',
+  'summary.claimed': '报告的构建版本为 {sdk}。这只是声明，不是实机验证。',
   'summary.fallback': '英文',
   'evidence.verified': '✓ 实机',
   'evidence.binary': '✓ 二进制',
   'evidence.community': '{count} 份报告',
+  'evidence.community.generic': '社区报告',
   'evidence.claimed': '开发者声明',
   'evidence.inferred': '≈ 推断',
   'evidence.unverified': '—',
@@ -324,8 +335,15 @@ export function getSummary(
   }
 
   const tier = getTier(app);
+  const confidence = getConfidence(app);
   if (tier === 'unrated' && app.features.includes('apple-featured')) {
     return { text: t(locale, 'summary.unrated.featured'), isFallback: false };
+  }
+  if (tier !== 'unrated' && confidence === 'inferred') {
+    return { text: t(locale, 'summary.inferred').replace('{sdk}', getSdkLabel(app)), isFallback: false };
+  }
+  if (tier !== 'unrated' && confidence === 'claimed') {
+    return { text: t(locale, 'summary.claimed').replace('{sdk}', getSdkLabel(app)), isFallback: false };
   }
   return { text: t(locale, `summary.${tier}`), isFallback: false };
 }
@@ -342,7 +360,8 @@ export function getEvidenceLabel(app: AppEntry, locale: Locale): string {
     return t(locale, 'evidence.binary');
   }
   if (confidence === 'community') {
-    return t(locale, 'evidence.community').replace('{count}', String(app.test?.reports ?? 2));
+    if (!app.test?.reports) return t(locale, 'evidence.community.generic');
+    return t(locale, 'evidence.community').replace('{count}', String(app.test.reports));
   }
   return t(locale, `evidence.${confidence}`);
 }
