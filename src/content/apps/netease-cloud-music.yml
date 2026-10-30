@@ -3,24 +3,24 @@ name_zh: 网易云音乐
 rank: 20
 developer: 杭州网易云音乐科技有限公司
 category: music
-store_id: '590338362'
+store_id: "590338362"
 icon: /icons/netease-cloud-music.jpg
 aliases:
-- 网易云
+  - 网易云
 build:
-  sdk: '26'
+  sdk: "26"
   evidence: observed
-  checked: '2026-10-24'
+  checked: 2026-10-24
 features: []
 issues: []
 store:
-  current_version: 9.6.13
-  current_version_release_date: '2026-10-23'
-  synced_at: '2026-10-24'
+  current_version: 9.6.15
+  current_version_release_date: 2026-10-28
+  synced_at: 2026-10-30
 test:
   confidence: verified
   version: 9.6.13
-  os: '27.1'
-  date: '2026-10-24'
-  by: '@SonettoGu14'
+  os: "27.1"
+  date: 2026-10-24
+  by: "@SonettoGu14"
   device: iPhone Duo

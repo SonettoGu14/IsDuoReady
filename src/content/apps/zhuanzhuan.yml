@@ -3,25 +3,25 @@ name_zh: 转转
 rank: 75
 developer: Zhuanzhuan Co.,Ltd.
 category: shopping
-store_id: '1002355194'
+store_id: "1002355194"
 icon: /icons/zhuanzhuan.jpg
 aliases:
-- 转转
-- Zhuanzhuan
+  - 转转
+  - Zhuanzhuan
 build:
-  sdk: '26'
+  sdk: "26"
   evidence: observed
-  checked: '2026-10-24'
+  checked: 2026-10-24
 test:
   confidence: verified
   version: 12.19.0
-  os: '27.1'
-  date: '2026-10-24'
-  by: '@SonettoGu14'
+  os: "27.1"
+  date: 2026-10-24
+  by: "@SonettoGu14"
   device: iPhone Duo
 features: []
 issues: []
 store:
-  current_version: 12.19.0
-  current_version_release_date: '2026-10-18'
-  synced_at: '2026-10-25'
+  current_version: 12.19.5
+  current_version_release_date: 2026-10-25
+  synced_at: 2026-10-30

@@ -3,26 +3,26 @@ name_zh: 宜家家居
 rank: 86
 developer: Inter IKEA Systems B.V.
 category: shopping
-store_id: '1487448370'
+store_id: "1487448370"
 icon: /icons/ikea.jpg
 aliases:
-- IKEA宜家家居
-- IKEA
-- 宜家
+  - IKEA宜家家居
+  - IKEA
+  - 宜家
 build:
-  sdk: '26'
+  sdk: "26"
   evidence: observed
-  checked: '2026-10-24'
+  checked: 2026-10-24
 test:
   confidence: verified
   version: 5.21.0
-  os: '27.1'
-  date: '2026-10-24'
-  by: '@SonettoGu14'
+  os: "27.1"
+  date: 2026-10-24
+  by: "@SonettoGu14"
   device: iPhone Duo
 features: []
 issues: []
 store:
-  current_version: 5.21.0
-  current_version_release_date: '2026-10-12'
-  synced_at: '2026-10-25'
+  current_version: 5.22.0
+  current_version_release_date: 2026-10-29
+  synced_at: 2026-10-30

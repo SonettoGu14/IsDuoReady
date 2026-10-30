@@ -3,24 +3,24 @@ name_zh: 个人所得税
 rank: 38
 developer: State Administration of Taxation
 category: finance
-store_id: '1436002627'
+store_id: "1436002627"
 icon: /icons/individual-income-tax.jpg
 aliases:
-- 个税
+  - 个税
 build:
-  sdk: '26'
+  sdk: "26"
   evidence: observed
-  checked: '2026-10-24'
+  checked: 2026-10-24
 features: []
 issues: []
 store:
-  current_version: 2.3.4
-  current_version_release_date: '2026-08-29'
-  synced_at: '2026-10-24'
+  current_version: 2.3.5
+  current_version_release_date: 2026-10-27
+  synced_at: 2026-10-30
 test:
   confidence: verified
   version: 2.3.4
-  os: '27.1'
-  date: '2026-10-24'
-  by: '@SonettoGu14'
+  os: "27.1"
+  date: 2026-10-24
+  by: "@SonettoGu14"
   device: iPhone Duo

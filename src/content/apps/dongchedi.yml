@@ -3,25 +3,25 @@ name_zh: 懂车帝
 rank: 88
 developer: Chongqing Vientiane UCAR Technology Co.Ltd.
 category: utilities
-store_id: '1232131998'
+store_id: "1232131998"
 icon: /icons/dongchedi.jpg
 aliases:
-- 懂车帝
-- Dongchedi
+  - 懂车帝
+  - Dongchedi
 build:
-  sdk: '26'
+  sdk: "26"
   evidence: observed
-  checked: '2026-10-24'
+  checked: 2026-10-24
 test:
   confidence: verified
   version: 9.2.8
-  os: '27.1'
-  date: '2026-10-24'
-  by: '@SonettoGu14'
+  os: "27.1"
+  date: 2026-10-24
+  by: "@SonettoGu14"
   device: iPhone Duo
 features: []
 issues: []
 store:
-  current_version: 9.2.8
-  current_version_release_date: '2026-10-21'
-  synced_at: '2026-10-25'
+  current_version: 9.2.9
+  current_version_release_date: 2026-10-28
+  synced_at: 2026-10-30
