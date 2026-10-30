@@ -3,25 +3,25 @@ name_zh: 爱奇艺
 rank: 16
 developer: Beijing Qiyi Century Science & Technology Co.,LTD.
 category: entertainment
-store_id: '393765873'
+store_id: "393765873"
 icon: /icons/iqiyi.jpg
 aliases:
-- 爱奇艺视频
+  - 爱奇艺视频
 build:
-  sdk: '27.1'
+  sdk: "27.1"
   evidence: observed
-  checked: '2026-10-24'
+  checked: 2026-10-24
 features:
-- apple-featured
+  - apple-featured
 issues: []
 store:
-  current_version: 17.10.3
-  current_version_release_date: '2026-10-23'
-  synced_at: '2026-10-24'
+  current_version: 17.10.5
+  current_version_release_date: 2026-10-30
+  synced_at: 2026-10-30
 test:
   confidence: verified
   version: 17.10.3
-  os: '27.1'
-  date: '2026-10-24'
-  by: '@SonettoGu14'
+  os: "27.1"
+  date: 2026-10-24
+  by: "@SonettoGu14"
   device: iPhone Duo

@@ -3,25 +3,25 @@ name_zh: 腾讯体育
 rank: 82
 developer: Tencent Technology (Beijing) Company Limited
 category: sports
-store_id: '570608623'
+store_id: "570608623"
 icon: /icons/tencent-sports.jpg
 aliases:
-- 腾讯体育
-- Tencent Sports
+  - 腾讯体育
+  - Tencent Sports
 build:
-  sdk: '26'
+  sdk: "26"
   evidence: observed
-  checked: '2026-10-24'
+  checked: 2026-10-24
 test:
   confidence: verified
   version: 8.0.85
-  os: '27.1'
-  date: '2026-10-24'
-  by: '@SonettoGu14'
+  os: "27.1"
+  date: 2026-10-24
+  by: "@SonettoGu14"
   device: iPhone Duo
 features: []
 issues: []
 store:
-  current_version: 8.0.85
-  current_version_release_date: '2026-10-21'
-  synced_at: '2026-10-25'
+  current_version: 8.0.90
+  current_version_release_date: 2026-10-30
+  synced_at: 2026-10-30
