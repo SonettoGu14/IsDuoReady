@@ -3,25 +3,25 @@ name_zh: Apple Store
 rank: 78
 developer: Apple
 category: shopping
-store_id: '375380948'
+store_id: "375380948"
 icon: /icons/apple-store.jpg
 aliases:
-- Apple Store
-- 苹果商店
+  - Apple Store
+  - 苹果商店
 build:
-  sdk: '26'
+  sdk: "26"
   evidence: observed
-  checked: '2026-10-24'
+  checked: 2026-10-24
 test:
   confidence: verified
-  version: '6.9'
-  os: '27.1'
-  date: '2026-10-24'
-  by: '@SonettoGu14'
+  version: "6.9"
+  os: "27.1"
+  date: 2026-10-24
+  by: "@SonettoGu14"
   device: iPhone Duo
 features: []
 issues: []
 store:
-  current_version: '6.9'
-  current_version_release_date: '2026-07-22'
-  synced_at: '2026-10-25'
+  current_version: "6.10"
+  current_version_release_date: 2026-11-17
+  synced_at: 2026-11-28
